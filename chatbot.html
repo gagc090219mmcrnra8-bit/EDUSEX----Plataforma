@@ -8,369 +8,327 @@
 
 <style>
 :root {
-    --morado: #68097E;
-    --rosa: #C91C7A;
-    --rosa-claro: #f5a6d5;
-    --morado-suave: #f4e7f7;
-    --fondo: #edf3fa;
-    --blanco: #ffffff;
-    --texto: #26384a;
-    --borde: #dce5ee;
-    --turquesa: #dff8f6;
-    --oscuro: #28152d;
+    --morado:#68097E;
+    --rosa:#C91C7A;
+    --rosa-claro:#f5a6d5;
+    --morado-suave:#f4e7f7;
+    --fondo:#edf3fa;
+    --blanco:#fff;
+    --texto:#26384a;
+    --borde:#dce5ee;
 }
-
-* {
-    box-sizing: border-box;
-}
-
+* { box-sizing:border-box; }
 body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: var(--fondo);
-    color: var(--texto);
-    line-height: 1.6;
+    margin:0;
+    font-family:Arial,Helvetica,sans-serif;
+    background:var(--fondo);
+    color:var(--texto);
+    line-height:1.6;
 }
-
-/* ENCABEZADO */
 header {
-    text-align: center;
-    padding: 25px 18px 20px;
-    background: linear-gradient(135deg, var(--morado), var(--rosa));
-    color: white;
+    text-align:center;
+    padding:25px 18px 20px;
+    background:linear-gradient(135deg,var(--morado),var(--rosa));
+    color:white;
 }
-
 .brand {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 12px;
-    flex-wrap: wrap;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:12px;
+    flex-wrap:wrap;
 }
-
 .brand img {
-    width: 55px;
-    height: 55px;
-    object-fit: contain;
-    border-radius: 50%;
-    background: white;
-    border: 2px solid var(--rosa-claro);
+    width:55px;
+    height:55px;
+    object-fit:contain;
+    border-radius:50%;
+    background:white;
+    border:2px solid var(--rosa-claro);
 }
-
 h1 {
-    color: white;
-    font-size: clamp(26px, 4vw, 40px);
-    margin: 0;
+    color:white;
+    font-size:clamp(26px,4vw,40px);
+    margin:0;
 }
-
 header p {
-    font-size: 16px;
-    max-width: 800px;
-    margin: 14px auto 0;
+    font-size:16px;
+    max-width:800px;
+    margin:14px auto 0;
 }
-
-/* NAVEGACIÓN */
 nav {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 5px;
-    background: white;
-    padding: 12px;
-    box-shadow: 0 3px 12px #28152d0c;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:5px;
+    background:white;
+    padding:12px;
+    box-shadow:0 3px 12px #28152d0c;
 }
-
 nav a {
-    padding: 9px 11px;
-    border-radius: 8px;
-    color: var(--morado);
-    font-weight: bold;
-    text-decoration: none;
-    transition: background .2s, color .2s;
+    padding:9px 11px;
+    border-radius:8px;
+    color:var(--morado);
+    font-weight:bold;
+    text-decoration:none;
+    transition:background .2s,color .2s;
 }
-
-nav a:hover,
-nav a:focus-visible {
-    background: var(--morado-suave);
-    color: var(--rosa);
+nav a:hover,nav a:focus-visible {
+    background:var(--morado-suave);
+    color:var(--rosa);
 }
-
-/* DISTRIBUCIÓN PRINCIPAL */
 .layout {
-    max-width: 1400px;
-    margin: 25px auto 35px;
-    padding: 0 20px;
-    display: grid;
-    grid-template-columns: minmax(280px, .82fr) minmax(0, 1.25fr);
-    gap: 24px;
+    max-width:1400px;
+    margin:25px auto 35px;
+    padding:0 20px;
+    display:grid;
+    grid-template-columns:minmax(280px,.82fr) minmax(0,1.25fr);
+    gap:24px;
 }
-
 .panel {
-    background: white;
-    border-radius: 20px;
-    padding: 24px;
-    box-shadow: 0 8px 24px #23394e14;
-    min-width: 0;
-    border: 1px solid #ffffff;
+    background:white;
+    border-radius:20px;
+    padding:24px;
+    box-shadow:0 8px 24px #23394e14;
+    min-width:0;
+    border:1px solid white;
 }
-
 .panel h2 {
-    color: var(--morado);
-    font-size: 25px;
-    margin: 0 0 18px;
+    color:var(--morado);
+    font-size:25px;
+    margin:0 0 18px;
 }
-
-/* BUSCADOR */
-#buscar {
-    width: 100%;
-    padding: 14px;
-    border: 1px solid #cdb5d5;
-    border-radius: 11px;
-    font-size: 16px;
-    margin-bottom: 14px;
-    outline: none;
-    background: #fff;
-    color: var(--texto);
+#buscar,form input {
+    width:100%;
+    padding:14px;
+    border:1px solid #cdb5d5;
+    border-radius:11px;
+    font-size:16px;
+    outline:none;
+    background:white;
+    color:var(--texto);
 }
-
-#buscar:focus,
-form input:focus {
-    border-color: var(--rosa);
-    box-shadow: 0 0 0 3px #c91c7a1c;
+#buscar { margin-bottom:14px; }
+#buscar:focus,form input:focus {
+    border-color:var(--rosa);
+    box-shadow:0 0 0 3px #c91c7a1c;
 }
-
-/* LISTA DE PREGUNTAS */
 #lista {
-    display: flex;
-    flex-direction: column;
-    gap: 9px;
-    max-height: 570px;
-    overflow-y: auto;
-    padding: 2px 5px 2px 0;
+    display:flex;
+    flex-direction:column;
+    gap:9px;
+    max-height:570px;
+    overflow-y:auto;
+    padding:2px 5px 2px 0;
 }
-
 .pregunta {
-    width: 100%;
-    text-align: left;
-    border: 1px solid var(--borde);
-    background: #fcf8fd;
-    color: var(--texto);
-    border-radius: 11px;
-    padding: 13px 14px;
-    font-size: 15px;
-    line-height: 1.45;
-    cursor: pointer;
-    transition: background .2s, border-color .2s, transform .2s;
+    width:100%;
+    text-align:left;
+    border:1px solid var(--borde);
+    background:#fcf8fd;
+    color:var(--texto);
+    border-radius:11px;
+    padding:13px 14px;
+    font-size:15px;
+    line-height:1.45;
+    cursor:pointer;
+    transition:background .2s,border-color .2s,transform .2s;
 }
-
-.pregunta:hover,
-.pregunta:focus-visible {
-    background: var(--morado-suave);
-    border-color: #c69bd4;
-    transform: translateX(2px);
-    outline: none;
+.pregunta:hover,.pregunta:focus-visible {
+    background:var(--morado-suave);
+    border-color:#c69bd4;
+    transform:translateX(2px);
+    outline:none;
 }
-
 .nota {
-    color: #657381;
-    line-height: 1.5;
-    font-size: 13px;
-    margin: 16px 0 0;
+    color:#657381;
+    line-height:1.5;
+    font-size:13px;
+    margin:16px 0 0;
 }
-
-/* CHAT */
 .chatpanel {
-    display: flex;
-    flex-direction: column;
+    display:flex;
+    flex-direction:column;
 }
-
 .mensajes {
-    height: 520px;
-    overflow-y: auto;
-    background: #f9f4fa;
-    border: 1px solid #f0e4f3;
-    border-radius: 14px;
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 13px;
-    margin-bottom: 14px;
+    height:520px;
+    overflow-y:auto;
+    background:#f9f4fa;
+    border:1px solid #f0e4f3;
+    border-radius:14px;
+    padding:16px;
+    display:flex;
+    flex-direction:column;
+    gap:13px;
+    margin-bottom:14px;
 }
-
 .mensaje {
-    max-width: 92%;
-    border-radius: 16px;
-    padding: 13px 15px;
-    line-height: 1.5;
-    overflow-wrap: anywhere;
-    white-space: pre-wrap;
+    max-width:92%;
+    border-radius:16px;
+    padding:13px 15px;
+    line-height:1.5;
+    overflow-wrap:anywhere;
+    white-space:pre-wrap;
 }
-
 .mensaje strong {
-    display: block;
-    font-size: 13px;
-    margin-bottom: 5px;
+    display:block;
+    font-size:13px;
+    margin-bottom:5px;
 }
-
 .bot {
-    align-self: flex-start;
-    background: var(--morado-suave);
-    color: #382541;
-    border-left: 4px solid var(--morado);
-    border-bottom-left-radius: 4px;
+    align-self:flex-start;
+    background:var(--morado-suave);
+    color:#382541;
+    border-left:4px solid var(--morado);
+    border-bottom-left-radius:4px;
 }
-
 .usuario {
-    align-self: flex-end;
-    background: var(--morado);
-    color: white;
-    border-bottom-right-radius: 4px;
+    align-self:flex-end;
+    background:var(--morado);
+    color:white;
+    border-bottom-right-radius:4px;
 }
-
-/* FORMULARIO */
 form {
-    display: flex;
-    gap: 10px;
+    display:flex;
+    gap:10px;
 }
-
 form input {
-    min-width: 0;
-    flex: 1;
-    padding: 14px 15px;
-    border: 1px solid #cdb5d5;
-    border-radius: 11px;
-    font-size: 16px;
-    outline: none;
+    min-width:0;
+    flex:1;
 }
-
 .btn {
-    border: 0;
-    border-radius: 11px;
-    padding: 13px 19px;
-    background: var(--morado);
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    font-size: 15px;
-    transition: background .2s, transform .2s;
+    border:0;
+    border-radius:11px;
+    padding:13px 19px;
+    background:var(--morado);
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+    font-size:15px;
+    transition:background .2s,transform .2s;
 }
-
-.btn:hover {
-    background: var(--rosa);
-}
-
+.btn:hover { background:var(--rosa); }
 .btn:focus-visible {
-    outline: 3px solid var(--rosa-claro);
-    outline-offset: 3px;
+    outline:3px solid var(--rosa-claro);
+    outline-offset:3px;
 }
-
-.btn:active {
-    transform: scale(.98);
+.btn:active { transform:scale(.98); }
+.btn:disabled {
+    opacity:.6;
+    cursor:wait;
 }
-
-.acciones {
-    margin-top: 12px;
-}
-
+.acciones { margin-top:12px; }
 #limpiar {
-    background: #fff;
-    color: var(--morado);
-    border: 1px solid #c69bd4;
+    background:white;
+    color:var(--morado);
+    border:1px solid #c69bd4;
 }
-
 #limpiar:hover {
-    background: var(--morado-suave);
-    color: var(--rosa);
+    background:var(--morado-suave);
+    color:var(--rosa);
 }
-
-/* PIE DE PÁGINA */
 footer {
-    text-align: center;
-    padding: 23px;
-    color: white;
-    background: var(--morado);
-    font-size: 14px;
+    text-align:center;
+    padding:23px;
+    color:white;
+    background:var(--morado);
+    font-size:14px;
 }
-
-footer p {
-    margin: 5px;
-}
-
-/* MENSAJES DE ACCESIBILIDAD */
+footer p { margin:5px; }
 #estado {
-    color: var(--morado);
-    font-size: 13px;
-    min-height: 18px;
+    color:var(--morado);
+    font-size:13px;
+    min-height:18px;
 }
-
-/* DISEÑO RESPONSIVO */
-@media (max-width: 850px) {
-    .layout {
-        grid-template-columns: 1fr;
-    }
-
-    .mensajes {
-        height: 420px;
-    }
-
-    #lista {
-        max-height: 330px;
-    }
+@media(max-width:850px) {
+    .layout { grid-template-columns:1fr; }
+    .mensajes { height:420px; }
+    #lista { max-height:330px; }
 }
-
-@media (max-width: 520px) {
+@media(max-width:520px) {
     .layout {
-        padding: 0 12px;
-        gap: 15px;
-        margin-top: 16px;
+        padding:0 12px;
+        gap:15px;
+        margin-top:16px;
     }
-
     .panel {
-        padding: 17px;
-        border-radius: 15px;
+        padding:17px;
+        border-radius:15px;
     }
-
-    .panel h2 {
-        font-size: 22px;
-    }
-
+    .panel h2 { font-size:22px; }
     nav a {
-        font-size: 14px;
-        padding: 8px;
+        font-size:14px;
+        padding:8px;
     }
-
-    form {
-        flex-wrap: wrap;
-    }
-
-    form input,
-    form .btn {
-        flex-basis: 100%;
-    }
-
-    .mensaje {
-        max-width: 100%;
-    }
-
+    form { flex-wrap:wrap; }
+    form input,form .btn { flex-basis:100%; }
+    .mensaje { max-width:100%; }
     .mensajes {
-        height: 50vh;
-        min-height: 300px;
+        height:50vh;
+        min-height:300px;
+    }
+}
+@media(prefers-reduced-motion:reduce) {
+    *, *::before, *::after {
+        scroll-behavior:auto!important;
+        transition:none!important;
     }
 }
 
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        scroll-behavior: auto !important;
-        transition: none !important;
+/* BOTÓN PARA CONSULTAR GEMINI */
+.boton-gemini {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    margin-top:18px;
+    padding:17px;
+    border:1px solid #e2cce9;
+    border-radius:14px;
+    background:linear-gradient(135deg,#f8effb,#fff1f8);
+}
+.boton-gemini p {
+    margin:0;
+    font-size:14px;
+    color:var(--texto);
+}
+.boton-gemini strong {
+    display:block;
+    color:var(--morado);
+    margin-bottom:3px;
+}
+.btn-gemini {
+    display:inline-block;
+    flex-shrink:0;
+    padding:11px 16px;
+    border-radius:10px;
+    background:var(--morado);
+    color:white;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:bold;
+    transition:background .2s,transform .2s;
+}
+.btn-gemini:hover {
+    background:var(--rosa);
+    transform:translateY(-2px);
+}
+.btn-gemini:focus-visible {
+    outline:3px solid var(--rosa-claro);
+    outline-offset:3px;
+}
+@media(max-width:520px) {
+    .boton-gemini {
+        flex-direction:column;
+        align-items:stretch;
+        text-align:center;
     }
+    .btn-gemini { text-align:center; }
 }
 </style>
 </head>
 
 <body>
-
 <header>
     <div class="brand">
         <img src="logo.jpeg" alt="Logo EDUSEX"
@@ -394,19 +352,12 @@ footer p {
 </nav>
 
 <main class="layout">
-
     <section class="panel">
         <h2>📚 <span id="total">0</span> preguntas</h2>
-
-        <input
-            id="buscar"
-            type="search"
-            placeholder="Buscar una pregunta..."
-            aria-label="Buscar una pregunta"
-        >
-
+        <input id="buscar" type="search"
+               placeholder="Buscar una pregunta..."
+               aria-label="Buscar una pregunta">
         <div id="lista"></div>
-
         <p class="nota">
             Selecciona una pregunta para verla en la conversación.
         </p>
@@ -414,7 +365,6 @@ footer p {
 
     <section class="panel chatpanel">
         <h2>💬 Conversación</h2>
-
         <div id="mensajes" class="mensajes" aria-live="polite">
             <div class="mensaje bot">
                 <strong>EDUSEX</strong>
@@ -425,15 +375,13 @@ footer p {
         </div>
 
         <form id="formulario">
-            <input
-                id="entrada"
-                type="text"
-                placeholder="Escribe tu pregunta..."
-                aria-label="Escribe tu pregunta"
-                autocomplete="off"
-                required
-            >
-            <button class="btn" type="submit">Enviar</button>
+            <input id="entrada" type="text"
+                   placeholder="Escribe tu pregunta..."
+                   aria-label="Escribe tu pregunta"
+                   autocomplete="off" required>
+            <button id="enviar" class="btn" type="submit">
+                Enviar
+            </button>
         </form>
 
         <p id="estado" aria-live="polite"></p>
@@ -444,13 +392,29 @@ footer p {
             </button>
         </div>
 
+        <!-- Botón para abrir Gemini -->
+        <div class="boton-gemini">
+            <p>
+                <strong>💜 ¿Necesitas más ayuda?</strong>
+                También puedes consultar la inteligencia artificial de Gemini.
+            </p>
+            <a
+                class="btn-gemini"
+                href="https://gemini.google.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Abrir Gemini en una pestaña nueva"
+            >
+                ✨ Consultar Gemini
+            </a>
+        </div>
+
         <p class="nota">
-            Este chatbot responde con información educativa general.
+            Este chatbot ofrece información educativa general.
             No diagnostica ni sustituye una consulta médica.
-            Si no reconoce una pregunta, te sugerirá temas relacionados.
+            Las respuestas de IA deben verificarse con fuentes confiables.
         </p>
     </section>
-
 </main>
 
 <footer>
@@ -459,6 +423,11 @@ footer p {
 </footer>
 
 <script>
+/*
+  EDUSEX: BASE DE PREGUNTAS Y RESPUESTAS LOCALES.
+  La IA se consulta a través de Flask en /api/chatbot.
+*/
+
 const datos = [
 ["¿Qué es la salud sexual?","salud sexual","La salud sexual es el bienestar físico, emocional y social relacionado con la sexualidad. Incluye información confiable, respeto, consentimiento y acceso a servicios de salud."],
 ["¿Qué es la salud reproductiva?","salud reproductiva","Es el bienestar relacionado con el sistema reproductivo y las decisiones informadas sobre la reproducción."],
@@ -521,13 +490,13 @@ const datos = [
 ["¿El chatbot puede sustituir a un médico?","reemplaza medico|es un medico|diagnostico","No. EDUSEX ofrece información educativa general; no puede diagnosticar ni sustituir una consulta médica."]
 ];
 
-/* NORMALIZAR TEXTO: IGNORA ACENTOS Y SIGNOS */
+// NORMALIZAR TEXTO
 function norm(texto) {
     return texto
         .toLocaleLowerCase("es-MX")
         .normalize("NFD")
         .replace(/[\u0300-\u036f]/g, "")
-        .replace(/[¿?¡!.,;:()[\]{}"'¡!]/g, " ")
+        .replace(/[¿?¡!.,;:()[\\]{}"']/g, " ")
         .replace(/\s+/g, " ")
         .trim();
 }
@@ -537,10 +506,12 @@ const buscar = document.getElementById("buscar");
 const mensajes = document.getElementById("mensajes");
 const entrada = document.getElementById("entrada");
 const estado = document.getElementById("estado");
+const formulario = document.getElementById("formulario");
+const botonEnviar = document.getElementById("enviar");
 
 document.getElementById("total").textContent = datos.length;
 
-/* MOSTRAR MENSAJES */
+// CREAR MENSAJES DE FORMA SEGURA
 function addMessage(texto, tipo, nombre) {
     const mensaje = document.createElement("div");
     mensaje.className = "mensaje " + tipo;
@@ -555,7 +526,7 @@ function addMessage(texto, tipo, nombre) {
     mensajes.scrollTop = mensajes.scrollHeight;
 }
 
-/* RESPUESTAS Y BÚSQUEDA POR PALABRAS */
+// BUSCAR RESPUESTA LOCAL
 function answer(preguntaUsuario) {
     const texto = norm(preguntaUsuario);
     const palabrasUsuario = texto.split(" ").filter(p => p.length > 2);
@@ -565,14 +536,11 @@ function answer(preguntaUsuario) {
 
     for (const dato of datos) {
         const preguntaBase = norm(dato[0]);
-        const palabrasBase = preguntaBase.split(" ").filter(p => p.length > 2);
 
-        // Coincidencia con la pregunta completa
         if (texto === preguntaBase) {
             return dato[2];
         }
 
-        // Coincidencia con palabras clave
         for (const palabraClave of dato[1].split("|")) {
             const clave = norm(palabraClave);
 
@@ -591,14 +559,7 @@ function answer(preguntaUsuario) {
                     mejorRespuesta = dato;
                 }
             }
-        }
 
-        // Comparar palabras importantes de la pregunta
-        const palabrasClave = dato[1]
-            .split("|")
-            .map(norm);
-
-        for (const clave of palabrasClave) {
             const palabras = clave.split(" ").filter(p => p.length > 2);
             if (!palabras.length) continue;
 
@@ -609,7 +570,6 @@ function answer(preguntaUsuario) {
             if (coincidencias > 0) {
                 let puntuacion = (coincidencias / palabras.length) * 35;
 
-                // Favorecer coincidencias de frases más específicas
                 if (coincidencias === palabras.length) {
                     puntuacion += 15;
                 }
@@ -621,7 +581,7 @@ function answer(preguntaUsuario) {
             }
         }
 
-        // Buscar también términos de la pregunta original
+        const palabrasBase = preguntaBase.split(" ").filter(p => p.length > 2);
         const coincidenciasPregunta = palabrasBase.filter(p =>
             palabrasUsuario.includes(p)
         ).length;
@@ -641,25 +601,77 @@ function answer(preguntaUsuario) {
         return mejorRespuesta[2];
     }
 
-    return "No encontré una respuesta adecuada para esa pregunta. Intenta escribirla de otra manera o selecciona un tema de la lista. Puedes preguntar sobre métodos anticonceptivos, condón, ITS, menstruación, consentimiento o centros de salud.";
+    return "No encontré una respuesta adecuada. Intenta preguntar de otra manera o consulta un centro de salud. Puedes preguntar sobre anticonceptivos, ITS, menstruación, consentimiento o prevención.";
 }
 
-/* ENVIAR PREGUNTA */
-function send(texto) {
+/*
+  CONEXIÓN CON LA IA.
+  Flask recibe la pregunta en /api/chatbot.
+  La clave de API nunca se coloca en este archivo.
+*/
+async function consultarIA(pregunta) {
+    const respuesta = await fetch("/api/chatbot", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ pregunta: pregunta })
+    });
+
+    const resultado = await respuesta.json();
+
+    if (!respuesta.ok) {
+        throw new Error(
+            resultado.error || "No fue posible consultar la IA."
+        );
+    }
+
+    if (!resultado.respuesta) {
+        throw new Error("La IA no devolvió una respuesta.");
+    }
+
+    return resultado.respuesta;
+}
+
+// ENVIAR PREGUNTA
+async function send(texto) {
     const pregunta = texto.trim();
-    if (!pregunta) return;
+
+    if (!pregunta || botonEnviar.disabled) return;
 
     addMessage(pregunta, "usuario", "Tú");
 
-    const respuesta = answer(pregunta);
-    addMessage(respuesta, "bot", "EDUSEX");
-
-    estado.textContent = "Respuesta generada.";
     entrada.value = "";
-    entrada.focus();
+    entrada.disabled = true;
+    botonEnviar.disabled = true;
+    botonEnviar.textContent = "Consultando...";
+    estado.textContent = "EDUSEX está preparando tu respuesta...";
+
+    try {
+        const respuesta = await consultarIA(pregunta);
+
+        addMessage(respuesta, "bot", "EDUSEX · Asistente IA");
+        estado.textContent = "Respuesta generada por la IA.";
+
+    } catch (error) {
+        console.error("Error al consultar EDUSEX IA:", error);
+
+        const respuestaLocal = answer(pregunta);
+
+        addMessage(respuestaLocal, "bot", "EDUSEX · Respuesta local");
+
+        estado.textContent =
+            "La IA no está disponible. Se utilizó la respuesta local.";
+
+    } finally {
+        entrada.disabled = false;
+        botonEnviar.disabled = false;
+        botonEnviar.textContent = "Enviar";
+        entrada.focus();
+    }
 }
 
-/* DIBUJAR Y FILTRAR PREGUNTAS */
+// MOSTRAR PREGUNTAS
 function draw(filtro = "") {
     lista.innerHTML = "";
 
@@ -673,7 +685,8 @@ function draw(filtro = "") {
 
     if (!encontradas.length) {
         const aviso = document.createElement("p");
-        aviso.textContent = "No encontré preguntas con ese texto. Intenta con otra palabra.";
+        aviso.textContent =
+            "No encontré preguntas con ese texto. Intenta con otra palabra.";
         aviso.className = "nota";
         lista.appendChild(aviso);
         return;
@@ -693,8 +706,8 @@ function draw(filtro = "") {
     });
 }
 
-/* EVENTOS */
-document.getElementById("formulario").addEventListener("submit", evento => {
+// EVENTOS
+formulario.addEventListener("submit", evento => {
     evento.preventDefault();
     send(entrada.value);
 });
@@ -716,9 +729,8 @@ document.getElementById("limpiar").addEventListener("click", () => {
     entrada.focus();
 });
 
-/* INICIAR CHATBOT */
+// INICIAR
 draw();
 </script>
-
 </body>
 </html>
