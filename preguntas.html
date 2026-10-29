@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Preguntas frecuentes sobre educación sexual, prevención y bienestar juvenil en EDUSEX.">
+
+    <title>EDUSEX | Preguntas frecuentes</title>
+    <link rel="stylesheet" href="estilos.css">
+
+    <style>
+        /* =========================
+           BARRA DE NAVEGACIÓN CON LOGO
+        ========================= */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding: 10px 22px;
+            background: #ffffff;
+            box-shadow: 0 4px 14px rgba(63, 25, 77, 0.15);
+        }
+
+        .navbar .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            flex-shrink: 0;
+            color: #3F194D;
+            text-decoration: none;
+            font-size: 22px;
+            font-weight: 800;
+        }
+
+        .navbar .logo img {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+            border-radius: 50%;
+            background: #ffffff;
+        }
+
+        .navbar .marca-sex {
+            color: #C91C7A;
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .navbar .nav-links a {
+            display: inline-block;
+            padding: 9px 10px;
+            border-radius: 8px;
+            color: #3F194D;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .navbar .nav-links a:hover {
+            background: #F0DFF5;
+            color: #C91C7A;
+        }
+
+        /* =========================
+           PREGUNTAS DESPLEGABLES
+        ========================= */
+        .faq-contenedor {
+            max-width: 900px;
+            margin: 30px auto;
+        }
+
+        .faq-introduccion {
+            text-align: center;
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+
+        .faq-item {
+            margin-bottom: 14px;
+            border: 1px solid #D8B7E0;
+            border-radius: 13px;
+            overflow: hidden;
+            background: #ffffff;
+            box-shadow: 0 4px 12px rgba(63, 25, 77, 0.07);
+        }
+
+        .faq-pregunta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            width: 100%;
+            padding: 18px;
+            border: none;
+            background: #F0DFF5;
+            color: #3F194D;
+            text-align: left;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .faq-pregunta:hover {
+            background: #E6C9EF;
+        }
+
+        .faq-pregunta .flecha {
+            flex-shrink: 0;
+            color: #C91C7A;
+            font-size: 20px;
+            transition: transform 0.25s;
+        }
+
+        .faq-pregunta[aria-expanded="true"] .flecha {
+            transform: rotate(180deg);
+        }
+
+        .faq-respuesta {
+            padding: 0 18px;
+            max-height: 0;
+            overflow: hidden;
+            background: #ffffff;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-respuesta.abierta {
+            padding: 17px 18px 20px;
+            max-height: 400px;
+        }
+
+        .faq-respuesta p {
+            margin: 0;
+            color: #3F194D;
+            line-height: 1.8;
+        }
+
+        .faq-imagen {
+            display: block;
+            width: 100%;
+            max-width: 700px;
+            max-height: 380px;
+            margin: 0 auto 25px;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        .faq-ayuda {
+            margin-top: 25px;
+            padding: 20px;
+            border-left: 5px solid #C91C7A;
+            border-radius: 10px;
+            background: #FFF0F8;
+            line-height: 1.8;
+        }
+
+        .faq-ayuda h2 {
+            margin-top: 0;
+            color: #3F194D;
+        }
+
+        .faq-botones {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        /* =========================
+           DISEÑO RESPONSIVO
+        ========================= */
+        @media (max-width: 700px) {
+            .navbar {
+                justify-content: center;
+                padding: 10px;
+            }
+
+            .navbar .logo {
+                justify-content: center;
+            }
+
+            .navbar .logo img {
+                width: 42px;
+                height: 42px;
+            }
+
+            .navbar .nav-links {
+                width: 100%;
+                gap: 3px;
+            }
+
+            .navbar .nav-links a {
+                padding: 7px 8px;
+                font-size: 12px;
+            }
+
+            .faq-contenedor {
+                margin: 20px auto;
+            }
+
+            .faq-pregunta {
+                padding: 15px;
+                font-size: 14px;
+            }
+
+            .faq-respuesta.abierta {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- BARRA DE NAVEGACIÓN -->
+    <nav class="navbar" aria-label="Navegación principal">
+
+        <a href="index.html" class="logo">
+            <img src="logo.jpeg" alt="Logotipo de EDUSEX">
+            <span>EDU<span class="marca-sex">SEX</span></span>
+        </a>
+
+        <div class="nav-links">
+            <a href="index.html">Inicio</a>
+            <a href="informacion.html">Información</a>
+            <a href="metodos.html">Métodos</a>
+            <a href="centros.html">Centros de apoyo</a>
+            <a href="material.html">Material</a>
+            <a href="campanas.html">Campañas</a>
+            <a href="chatbot.html">ChatBot</a>
+        </div>
+
+    </nav>
+
+    <!-- ENCABEZADO -->
+    <header class="encabezado-pagina">
+        <h1>Preguntas frecuentes</h1>
+        <p>Resolvemos tus dudas con información clara y confiable.</p>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="contenido">
+
+        <section class="faq-contenedor">
+
+            <img
+                class="faq-imagen"
+                src="faq.jpeg"
+                alt="Imagen educativa de preguntas frecuentes"
+                loading="lazy"
+            >
+
+            <div class="faq-introduccion">
+                <h2>¿Tienes alguna duda? 💜</h2>
+                <p>
+                    Selecciona una pregunta para desplegar su respuesta.
+                    Puedes abrir y cerrar las preguntas cuando lo necesites.
+                </p>
+            </div>
+
+            <!-- PREGUNTA 1 -->
+            <article class="faq-item">
+                <button class="faq-pregunta"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="respuesta1">
+                    ¿Por qué es importante la educación sexual?
+                    <span class="flecha" aria-hidden="true">⌄</span>
+                </button>
+
+                <div class="faq-respuesta" id="respuesta1">
+                    <p>
+                        La educación sexual ayuda a comprender los cambios
+                        del cuerpo, conocer los derechos, reconocer los límites
+                        personales y aprender a prevenir embarazos no planeados
+                        e infecciones de transmisión sexual. También promueve
+                        relaciones respetuosas y decisiones informadas, libres
+                        de presión y violencia.
+                    </p>
+                </div>
+            </article>
+
+            <!-- PREGUNTA 2 -->
+            <article class="faq-item">
+                <button class="faq-pregunta"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="respuesta2">
+                    ¿Todos los métodos anticonceptivos son iguales?
+                    <span class="flecha" aria-hidden="true">⌄</span>
+                </button>
+
+                <div class="faq-respuesta" id="respuesta2">
+                    <p>
+                        No. Existen métodos de barrera, hormonales y dispositivos
+                        de larga duración, entre otros. Cambian en su eficacia,
+                        forma de uso y posibles efectos secundarios. Un
+                        profesional de salud puede explicar sus diferencias
+                        y ayudarte a conocer las opciones adecuadas para ti.
+                    </p>
+                </div>
+            </article>
+
+            <!-- PREGUNTA 3 -->
+            <article class="faq-item">
+                <button class="faq-pregunta"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="respuesta3">
+                    ¿Los métodos anticonceptivos protegen contra las ITS?
+                    <span class="flecha" aria-hidden="true">⌄</span>
+                </button>
+
+                <div class="faq-respuesta" id="respuesta3">
+                    <p>
+                        No todos. El condón externo o interno ayuda a reducir
+                        el riesgo de muchas infecciones de transmisión sexual
+                        cuando se utiliza correctamente. Las pastillas, los
+                        implantes, las inyecciones y otros métodos que previenen
+                        el embarazo no protegen contra las ITS.
+                    </p>
+                </div>
+            </article>
+
+            <!-- PREGUNTA 4 -->
+            <article class="faq-item">
+                <button class="faq-pregunta"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="respuesta4">
+                    ¿Dónde puedo resolver dudas personales?
+                    <span class="flecha" aria-hidden="true">⌄</span>
+                </button>
+
+                <div class="faq-respuesta" id="respuesta4">
+                    <p>
+                        Puedes acudir a un centro de salud y solicitar
+                        orientación a personal capacitado. También puedes
+                        consultar la sección de Centros de apoyo de EDUSEX.
+                        Si te preocupa tu privacidad, pregunta cómo se protege
+                        tu información y qué servicios están disponibles
+                        para adolescentes.
+                    </p>
+                </div>
+            </article>
+
+            <!-- PREGUNTA 5 -->
+            <article class="faq-item">
+                <button class="faq-pregunta"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="respuesta5">
+                    ¿Qué hago si siento presión para tomar una decisión?
+                    <span class="flecha" aria-hidden="true">⌄</span>
+                </button>
+
+                <div class="faq-respuesta" id="respuesta5">
+                    <p>
+                        Tienes derecho a establecer límites y decir que no.
+                        Nadie debe obligarte, amenazarte o hacerte sentir
+                        culpable por tus decisiones. Busca apoyo de una
+                        persona adulta de confianza, un orientador escolar
+                        o un profesional de salud si no respetan tus límites.
+                    </p>
+                </div>
+            </article>
+
+            <!-- PREGUNTA 6 -->
+            <article class="faq-item">
+                <button class="faq-pregunta"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="respuesta6">
+                    ¿Qué son las infecciones de transmisión sexual?
+                    <span class="flecha" aria-hidden="true">⌄</span>
+                </button>
+
+                <div class="faq-respuesta" id="respuesta6">
+                    <p>
+                        Son infecciones que pueden transmitirse principalmente
+                        por contacto sexual. Algunas pueden no presentar
+                        síntomas, por lo que una persona podría tener una
+                        infección sin saberlo. El uso del condón, las pruebas
+                        cuando están indicadas y la atención sanitaria ayudan
+                        a prevenir riesgos y detectar infecciones.
+                    </p>
+                </div>
+            </article>
+
+            <!-- PREGUNTA 7 -->
+            <article class="faq-item">
+                <button class="faq-pregunta"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="respuesta7">
+                    ¿Qué es el consentimiento?
+                    <span class="flecha" aria-hidden="true">⌄</span>
+                </button>
+
+                <div class="faq-respuesta" id="respuesta7">
+                    <p>
+                        Es un acuerdo libre, claro e informado. Debe darse
+                        sin presión, miedo ni manipulación y puede retirarse
+                        en cualquier momento. Guardar silencio o sentir miedo
+                        no significa aceptar. Respetar el consentimiento
+                        significa escuchar y respetar los límites de todas
+                        las personas involucradas.
+                    </p>
+                </div>
+            </article>
+
+            <!-- PREGUNTA 8 -->
+            <article class="faq-item">
+                <button class="faq-pregunta"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="respuesta8">
+                    ¿Qué hago si creo que puedo estar embarazada?
+                    <span class="flecha" aria-hidden="true">⌄</span>
+                </button>
+
+                <div class="faq-respuesta" id="respuesta8">
+                    <p>
+                        Una prueba de embarazo puede ayudarte a aclarar la
+                        situación. Muchas pruebas son más confiables desde
+                        el primer día de retraso menstrual; sigue las
+                        instrucciones del producto. También puedes acudir
+                        a un centro de salud para recibir orientación
+                        y conocer los siguientes pasos.
+                    </p>
+                </div>
+            </article>
+
+            <!-- PREGUNTA 9 -->
+            <article class="faq-item">
+                <button class="faq-pregunta"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="respuesta9">
+                    ¿La pastilla de emergencia es lo mismo que un método habitual?
+                    <span class="flecha" aria-hidden="true">⌄</span>
+                </button>
+
+                <div class="faq-respuesta" id="respuesta9">
+                    <p>
+                        No. La anticoncepción de emergencia se utiliza después
+                        de una relación sexual sin protección o cuando falla
+                        un método. Funciona mejor cuanto antes se utiliza,
+                        según el tipo disponible. No protege contra las ITS
+                        ni sustituye un método anticonceptivo habitual.
+                        Solicita orientación en un centro de salud o farmacia.
+                    </p>
+                </div>
+            </article>
+
+            <!-- PREGUNTA 10 -->
+            <article class="faq-item">
+                <button class="faq-pregunta"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="respuesta10">
+                    ¿Es normal sentir vergüenza al preguntar sobre estos temas?
+                    <span class="flecha" aria-hidden="true">⌄</span>
+                </button>
+
+                <div class="faq-respuesta" id="respuesta10">
+                    <p>
+                        Sí, es común sentir vergüenza o nervios al hablar
+                        sobre salud sexual. Puedes escribir tus preguntas
+                        antes de una consulta o pedir hablar en privado con
+                        personal de salud. Informarte es parte del autocuidado
+                        y mereces recibir respuestas respetuosas, sin burlas
+                        ni juicios.
+                    </p>
+                </div>
+            </article>
+
+            <!-- AYUDA ADICIONAL -->
+            <section class="faq-ayuda">
+                <h2>¿Necesitas más orientación? 💗</h2>
+
+                <p>
+                    EDUSEX ofrece información educativa general. Si tienes
+                    una duda personal, síntomas, preocupación por una posible
+                    infección o necesitas atención, acude a un profesional
+                    de salud.
+                </p>
+
+                <div class="faq-botones">
+                    <a class="btn" href="centros.html">
+                        Ver centros de apoyo
+                    </a>
+
+                    <a class="btn" href="chatbot.html">
+                        Consultar ChatBot
+                    </a>
+                </div>
+            </section>
+
+        </section>
+
+        <a class="btn" href="index.html">← Volver al inicio</a>
+
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="footer">
+        <p><strong>EDUSEX</strong> | Información para decidir con responsabilidad.</p>
+        <p>Proyecto educativo del CECyTEM Villa Victoria.</p>
+        <p>La información de esta página es educativa y no sustituye una consulta médica.</p>
+    </footer>
+
+    <!-- FUNCIONALIDAD DE LAS PREGUNTAS DESPLEGABLES -->
+    <script>
+        const preguntas = document.querySelectorAll(".faq-pregunta");
+
+        preguntas.forEach(function(pregunta) {
+            pregunta.addEventListener("click", function() {
+                const idRespuesta = pregunta.getAttribute("aria-controls");
+                const respuesta = document.getElementById(idRespuesta);
+                const estabaAbierta =
+                    pregunta.getAttribute("aria-expanded") === "true";
+
+                // Cierra todas las respuestas
+                preguntas.forEach(function(otraPregunta) {
+                    const otroId = otraPregunta.getAttribute("aria-controls");
+                    const otraRespuesta = document.getElementById(otroId);
+
+                    otraPregunta.setAttribute("aria-expanded", "false");
+                    otraRespuesta.classList.remove("abierta");
+                });
+
+                // Abre la seleccionada si antes estaba cerrada
+                if (!estabaAbierta) {
+                    pregunta.setAttribute("aria-expanded", "true");
+                    respuesta.classList.add("abierta");
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

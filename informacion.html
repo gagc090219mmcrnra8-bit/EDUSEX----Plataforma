@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Información general sobre salud sexual, prevención y bienestar juvenil en EDUSEX.">
+
+    <title>EDUSEX | Información general</title>
+    <link rel="stylesheet" href="estilos.css">
+
+    <style>
+        /* =========================
+           BARRA DE NAVEGACIÓN
+        ========================= */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding: 10px 22px;
+            background: #ffffff;
+            box-shadow: 0 4px 14px rgba(63, 25, 77, 0.15);
+        }
+
+        .navbar .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+            color: #3F194D;
+            text-decoration: none;
+            font-size: 22px;
+            font-weight: 800;
+        }
+
+        .navbar .logo img {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+            border-radius: 50%;
+            background: #ffffff;
+        }
+
+        .navbar .marca-sex {
+            color: #C91C7A;
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .navbar .nav-links a {
+            display: inline-block;
+            padding: 9px 10px;
+            border-radius: 8px;
+            color: #3F194D;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .navbar .nav-links a:hover {
+            background: #F0DFF5;
+            color: #C91C7A;
+        }
+
+        /* Evita que los títulos queden ocultos al navegar */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .encabezado-pagina,
+        .contenido {
+            scroll-margin-top: 100px;
+        }
+
+        /* Imagen principal */
+        .imagen-informacion {
+            display: block;
+            width: 100%;
+            max-width: 750px;
+            max-height: 450px;
+            margin: 0 auto 25px;
+            object-fit: cover;
+            border-radius: 16px;
+            box-shadow: 0 5px 18px rgba(63, 25, 77, 0.15);
+        }
+
+        /* Mejora la lectura de las secciones */
+        .contenido {
+            width: min(100% - 32px, 1000px);
+            margin: 35px auto;
+        }
+
+        .contenido .bloque {
+            margin-bottom: 25px;
+        }
+
+        .contenido h2 {
+            color: #3F194D;
+        }
+
+        .contenido p,
+        .contenido li {
+            line-height: 1.8;
+        }
+
+        .contenido ul {
+            padding-left: 25px;
+        }
+
+        .aviso {
+            margin: 25px 0;
+            padding: 18px 20px;
+            border-left: 5px solid #C91C7A;
+            border-radius: 10px;
+            background: #FCEAF5;
+            line-height: 1.7;
+        }
+
+        .boton-volver {
+            display: inline-block;
+            margin: 10px 0 25px;
+            padding: 12px 22px;
+            border-radius: 25px;
+            background: #3F194D;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .boton-volver:hover {
+            background: #C91C7A;
+            transform: translateY(-2px);
+        }
+
+        /* =========================
+           DISEÑO PARA CELULARES
+        ========================= */
+        @media (max-width: 700px) {
+            .navbar {
+                justify-content: center;
+                padding: 10px;
+            }
+
+            .navbar .logo {
+                justify-content: center;
+            }
+
+            .navbar .nav-links {
+                width: 100%;
+                gap: 3px;
+            }
+
+            .navbar .nav-links a {
+                padding: 7px 8px;
+                font-size: 12px;
+            }
+
+            .navbar .logo img {
+                width: 42px;
+                height: 42px;
+            }
+
+            .contenido {
+                width: calc(100% - 24px);
+                margin: 22px auto;
+            }
+
+            .imagen-informacion {
+                max-height: 320px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         BARRA DE NAVEGACIÓN CON LOGO
+    ========================= -->
+    <nav class="navbar" aria-label="Navegación principal">
+
+        <a href="index.html" class="logo">
+            <img src="logo.jpeg" alt="Logotipo de EDUSEX">
+            <span>EDU<span class="marca-sex">SEX</span></span>
+        </a>
+
+        <div class="nav-links">
+            <a href="index.html">Inicio</a>
+            <a href="informacion.html">Información</a>
+            <a href="metodos.html">Métodos</a>
+            <a href="centros.html">Centros de apoyo</a>
+            <a href="material.html">Material</a>
+            <a href="campanas.html">Campañas</a>
+            <a href="chatbot.html">ChatBot</a>
+        </div>
+
+    </nav>
+
+    <!-- =========================
+         ENCABEZADO
+    ========================= -->
+    <header class="encabezado-pagina">
+        <h1>Información general</h1>
+        <p>Conocimiento, prevención y decisiones informadas.</p>
+    </header>
+
+    <!-- =========================
+         CONTENIDO PRINCIPAL
+    ========================= -->
+    <main class="contenido">
+
+        <section class="bloque">
+
+            <img
+                class="imagen-informacion"
+                src="precoz.jpeg"
+                alt="Imagen de información educativa sobre salud sexual"
+                loading="lazy"
+            >
+
+            <h2>¿Por qué es importante informarse?</h2>
+
+            <p>
+                Contar con información confiable ayuda a comprender la salud
+                sexual, reconocer situaciones de riesgo, conocer medidas
+                de prevención y tomar decisiones con responsabilidad.
+            </p>
+
+        </section>
+
+        <section class="bloque">
+
+            <h2>Prevención del embarazo adolescente</h2>
+
+            <p>
+                La prevención requiere educación integral, acceso a orientación
+                profesional, comunicación respetuosa y conocimiento de los
+                métodos anticonceptivos. Las decisiones deben tomarse de
+                manera informada, libre de presiones y con respeto a los
+                derechos de cada persona.
+            </p>
+
+        </section>
+
+        <section class="bloque">
+
+            <h2>Temas que puedes explorar</h2>
+
+            <ul>
+                <li>Salud sexual y reproductiva.</li>
+                <li>Consentimiento, límites y respeto.</li>
+                <li>Prevención de infecciones de transmisión sexual.</li>
+                <li>Métodos anticonceptivos y orientación profesional.</li>
+                <li>Redes de apoyo para adolescentes.</li>
+            </ul>
+
+        </section>
+
+        <div class="aviso">
+            <strong>Recuerda:</strong> ante dudas personales sobre salud
+            sexual, consulta a personal de salud capacitado. La información
+            de esta página es educativa.
+        </div>
+
+        <a class="boton-volver" href="index.html">
+            ← Volver al inicio
+        </a>
+
+    </main>
+
+    <!-- =========================
+         PIE DE PÁGINA
+    ========================= -->
+    <footer class="footer">
+        <p><strong>EDUSEX</strong> | Proyecto educativo del CECyTEM</p>
+        <p>Informar, orientar y promover decisiones responsables.</p>
+    </footer>
+
+</body>
+</html>

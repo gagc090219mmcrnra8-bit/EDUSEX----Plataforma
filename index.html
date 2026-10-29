@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="EDUSEX: proyecto educativo sobre salud sexual, prevención y bienestar juvenil del CECyTEM Villa Victoria.">
+
+    <title>EDUSEX | Inicio</title>
+    <link rel="stylesheet" href="estilos.css">
+
+    <style>
+        /* ===== PORTADA ===== */
+        .portada-edusex {
+            position: relative;
+            min-height: min(760px, 100svh);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 70px 20px;
+            text-align: center;
+            color: white;
+            background-image:
+                linear-gradient(
+                    120deg,
+                    rgba(30, 15, 45, 0.78),
+                    rgba(120, 35, 95, 0.50)
+                ),
+                url("fondo.jpeg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #402342;
+        }
+
+        .portada-capa {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                135deg,
+                rgba(35, 15, 45, 0.15),
+                rgba(70, 20, 65, 0.20)
+            );
+            pointer-events: none;
+        }
+
+        .portada-contenido {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .logo-edusex-circulo {
+            width: 125px;
+            height: 125px;
+            margin: 0 auto 22px;
+            border-radius: 50%;
+            overflow: hidden;
+            background: white;
+            border: 3px solid rgba(255,255,255,.8);
+            box-shadow: 0 5px 22px rgba(0,0,0,.25);
+        }
+
+        .logo-edusex-circulo img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: contain;
+        }
+
+        .portada-etiqueta {
+            margin-bottom: 12px;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        .titulo-portada {
+            margin-bottom: 10px;
+            font-size: clamp(48px, 8vw, 82px);
+            line-height: 1.1;
+            font-weight: 900;
+            letter-spacing: 4px;
+            text-shadow: 0 4px 18px rgba(0,0,0,.3);
+        }
+
+        .eslogan-portada {
+            margin-bottom: 20px;
+            font-size: clamp(19px, 3vw, 27px);
+            color: #ffd9f0;
+        }
+
+        .descripcion-portada {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: clamp(16px, 2vw, 19px);
+            line-height: 1.8;
+        }
+
+        .btn-portada {
+            display: inline-block;
+            margin-top: 28px;
+            padding: 13px 25px;
+            border-radius: 9px;
+            background: #f5a6d5;
+            color: #35152f;
+            font-weight: bold;
+            text-decoration: none;
+            transition: transform .2s, background .2s;
+        }
+
+        .btn-portada:hover {
+            background: #ffd0eb;
+            transform: translateY(-3px);
+        }
+
+        /* ===== BARRA DE NAVEGACIÓN CON LOGO FIJO ===== */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 10px 20px;
+            background: #fff;
+            box-shadow: 0 4px 14px rgba(63,25,77,.15);
+        }
+
+        .navbar .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            flex-shrink: 0;
+            color: #3F194D;
+            text-decoration: none;
+            font-size: 22px;
+            font-weight: 800;
+        }
+
+        .navbar .logo img {
+            display: block;
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+            border-radius: 50%;
+            background: white;
+        }
+
+        .navbar .marca-sex {
+            color: #C91C7A;
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .navbar .nav-links a {
+            display: inline-block;
+            padding: 9px 10px;
+            border-radius: 8px;
+            color: #3F194D;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background .2s, color .2s;
+        }
+
+        .navbar .nav-links a:hover {
+            background: #F0DFF5;
+            color: #68097E;
+        }
+
+        #ingreso,
+        #menu {
+            scroll-margin-top: 120px;
+        }
+
+        /* ===== TARJETA DEL CHATBOT CON ESPACIO PARA FOTO ===== */
+        .tarjeta-chatbot {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            min-width: 0;
+            min-height: 100%;
+            padding: 0 !important;
+        }
+
+        .chatbot-foto {
+            display: block;
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+            object-position: center;
+            background: linear-gradient(135deg, #F0DFF5, #FCE5F1);
+        }
+
+        .chatbot-foto-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 230px;
+            background: linear-gradient(135deg, #F0DFF5, #FCE5F1);
+            color: #68097E;
+            font-size: 70px;
+        }
+
+        .tarjeta-chatbot .tarjeta-contenido {
+            flex: 1;
+            padding: 22px;
+        }
+
+        .tarjeta-chatbot h3 {
+            color: #68097E;
+            margin-top: 0;
+        }
+
+        .tarjeta-chatbot .btn {
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        /* ===== AJUSTES PARA CELULARES ===== */
+        @media (max-width: 700px) {
+            .navbar {
+                justify-content: center;
+                padding: 10px;
+            }
+
+            .navbar .logo {
+                justify-content: center;
+            }
+
+            .navbar .nav-links {
+                width: 100%;
+                gap: 3px;
+            }
+
+            .navbar .nav-links a {
+                padding: 7px 8px;
+                font-size: 12px;
+            }
+
+            #ingreso,
+            #menu {
+                scroll-margin-top: 150px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .portada-edusex {
+                min-height: 620px;
+                padding: 55px 20px;
+            }
+
+            .logo-edusex-circulo {
+                width: 100px;
+                height: 100px;
+            }
+
+            .portada-etiqueta {
+                font-size: 11px;
+                letter-spacing: 2px;
+            }
+
+            .titulo-portada {
+                letter-spacing: 2px;
+            }
+
+            .navbar .logo img {
+                width: 42px;
+                height: 42px;
+            }
+
+            .chatbot-foto,
+            .chatbot-foto-placeholder {
+                height: 190px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ===== PORTADA PRINCIPAL ===== -->
+    <section class="portada-edusex">
+        <div class="portada-capa"></div>
+
+        <div class="portada-contenido">
+            <div class="logo-edusex-circulo">
+                <img src="logo.jpeg" alt="Logotipo del proyecto EDUSEX">
+            </div>
+
+            <p class="portada-etiqueta">
+                CECyTEM · VILLA VICTORIA
+            </p>
+
+            <h1 class="titulo-portada">EDUSEX</h1>
+
+            <h2 class="eslogan-portada">
+                Educación · Prevención · Bienestar
+            </h2>
+
+            <p class="descripcion-portada">
+                Un espacio educativo para informarte, resolver tus dudas
+                y tomar decisiones responsables sobre la salud sexual
+                y reproductiva.
+            </p>
+
+            <a href="#ingreso" class="btn btn-portada">
+                Explorar EDUSEX ↓
+            </a>
+        </div>
+    </section>
+
+    <!-- ===== NAVEGACIÓN: LOGO SIEMPRE VISIBLE ===== -->
+    <nav class="navbar" aria-label="Navegación principal">
+        <a href="index.html" class="logo" aria-label="EDUSEX, inicio">
+            <img src="logo.jpeg" alt="Logotipo de EDUSEX">
+            <span>EDU<span class="marca-sex">SEX</span></span>
+        </a>
+
+        <div class="nav-links">
+            <a href="index.html">Inicio</a>
+            <a href="#ingreso">Ingresar</a>
+            <a href="#menu">Menú</a>
+            <a href="programadores.html">Programadores</a>
+            <a href="material.html">Material</a>
+            <a href="campanas.html">Campañas</a>
+            <a href="centros.html">Centros de consulta</a>
+            <a href="chatbot.html">ChatBot</a>
+        </div>
+    </nav>
+
+    <main>
+
+        <!-- ===== INGRESO ===== -->
+        <section class="seccion seccion-ingreso" id="ingreso">
+            <div class="contenedor">
+                <div class="seccion-titulo">
+                    <span class="etiqueta">BIENVENIDO/A</span>
+                    <h2>¡Comencemos!</h2>
+                    <p>
+                        Escribe tu nombre si deseas recibir un saludo
+                        personalizado y después explora los contenidos
+                        disponibles en EDUSEX.
+                    </p>
+                </div>
+
+                <form class="formulario-usuario" id="formUsuario">
+                    <label for="nombreUsuario">Nombre (opcional)</label>
+
+                    <input
+                        type="text"
+                        id="nombreUsuario"
+                        placeholder="Escribe tu nombre"
+                        maxlength="40"
+                        autocomplete="given-name"
+                    >
+
+                    <button type="submit" class="btn">
+                        Ingresar al menú
+                    </button>
+                </form>
+
+                <p id="saludo" aria-live="polite"></p>
+            </div>
+        </section>
+
+        <!-- ===== PRESENTACIÓN ===== -->
+        <section class="seccion fondo-blanco">
+            <div class="contenedor">
+                <div class="seccion-titulo">
+                    <h2>¿Qué es EDUSEX?</h2>
+                    <p>
+                        EDUSEX es una propuesta educativa que busca facilitar
+                        el acceso a información clara y confiable para las y
+                        los jóvenes de nuestra comunidad escolar.
+                    </p>
+                </div>
+
+                <div class="bloque">
+                    <h3>Objetivo del proyecto</h3>
+                    <p>
+                        Proporcionar información educativa sobre salud sexual,
+                        métodos anticonceptivos, prevención del embarazo
+                        adolescente y recursos de orientación, fomentando
+                        el autocuidado, el respeto y la toma de decisiones
+                        informadas.
+                    </p>
+                </div>
+
+                <div class="bloque">
+                    <h3>Nuestra misión</h3>
+                    <p>
+                        Promover una cultura de información, responsabilidad,
+                        respeto y prevención mediante recursos accesibles
+                        para la comunidad estudiantil.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== MENÚ PRINCIPAL ===== -->
+        <section class="seccion" id="menu">
+            <div class="contenedor">
+                <div class="seccion-titulo">
+                    <h2>Explora nuestro menú</h2>
+                    <p>
+                        Selecciona el apartado que deseas consultar.
+                        Aquí encontrarás información, materiales y recursos
+                        educativos para aprender más.
+                    </p>
+                </div>
+
+                <div class="grid">
+
+                    <!-- INFORMACIÓN -->
+                    <article class="tarjeta">
+                        <img
+                            class="imagen-tarjeta"
+                            src="info.jpeg"
+                            alt="Información educativa"
+                            loading="lazy"
+                        >
+
+                        <div class="tarjeta-contenido">
+                            <h3>Información general</h3>
+                            <p>Conoce los temas principales de EDUSEX.</p>
+                            <a class="btn" href="informacion.html">Consultar</a>
+                        </div>
+                    </article>
+
+                    <!-- MÉTODOS ANTICONCEPTIVOS -->
+                    <article class="tarjeta">
+                        <img
+                            class="imagen-tarjeta"
+                            src="anti.jpeg"
+                            alt="Métodos anticonceptivos"
+                            loading="lazy"
+                        >
+
+                        <div class="tarjeta-contenido">
+                            <h3>Métodos anticonceptivos</h3>
+                            <p>Aprende sobre prevención y orientación.</p>
+                            <a class="btn" href="metodos.html">Conocer más</a>
+                        </div>
+                    </article>
+
+                    <!-- CENTROS DE APOYO -->
+                    <article class="tarjeta">
+                        <img
+                            class="imagen-tarjeta"
+                            src="ubicacion.jpeg"
+                            alt="Centros de orientación"
+                            loading="lazy"
+                        >
+
+                        <div class="tarjeta-contenido">
+                            <h3>Centros de apoyo</h3>
+                            <p>Encuentra orientación y recursos de ayuda.</p>
+                            <a class="btn" href="centros.html">Ver recursos</a>
+                        </div>
+                    </article>
+
+                    <!-- PREGUNTAS FRECUENTES -->
+                    <article class="tarjeta">
+                        <img
+                            class="imagen-tarjeta"
+                            src="pfc.jpeg"
+                            alt="Preguntas frecuentes"
+                            loading="lazy"
+                        >
+
+                        <div class="tarjeta-contenido">
+                            <h3>Preguntas frecuentes</h3>
+                            <p>Consulta respuestas a dudas comunes.</p>
+                            <a class="btn" href="preguntas.html">Leer preguntas</a>
+                        </div>
+                    </article>
+
+                    <!-- PROGRAMADORES -->
+                    <article class="tarjeta">
+                        <img
+                            class="imagen-tarjeta"
+                            src="equipo.jpeg"
+                            alt="Equipo desarrollador del proyecto"
+                            loading="lazy"
+                        >
+
+                        <div class="tarjeta-contenido">
+                            <h3>Galería de programadores</h3>
+                            <p>Conoce al equipo que desarrolló el proyecto.</p>
+                            <a class="btn" href="programadores.html">Ver galería</a>
+                        </div>
+                    </article>
+
+                    <!-- MATERIAL -->
+                    <article class="tarjeta">
+                        <img
+                            class="imagen-tarjeta"
+                            src="material.jpeg"
+                            alt="Material informativo escolar"
+                            loading="lazy"
+                        >
+
+                        <div class="tarjeta-contenido">
+                            <h3>Material informativo</h3>
+                            <p>Consulta folletos y recursos educativos.</p>
+                            <a class="btn" href="material.html">Ver materiales</a>
+                        </div>
+                    </article>
+
+                    <!-- CAMPAÑAS -->
+                    <article class="tarjeta">
+                        <img
+                            class="imagen-tarjeta"
+                            src="campañas.jpeg"
+                            alt="Campaña educativa"
+                            loading="lazy"
+                        >
+
+                        <div class="tarjeta-contenido">
+                            <h3>Campañas</h3>
+                            <p>Descubre actividades que promueven la prevención.</p>
+                            <a class="btn" href="campanas.html">Explorar campañas</a>
+                        </div>
+                    </article>
+
+                    <!-- CHATBOT CON ESPACIO PARA UNA FOTO -->
+                    <article class="tarjeta tarjeta-chatbot">
+
+                        <!-- Cambia chatbot.jpg por el nombre de tu foto si es diferente -->
+                        <img
+                            class="chatbot-foto"
+                            src="chatbot.jpeg"
+                            alt="Imagen del ChatBot educativo EDUSEX"
+                            loading="lazy"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                        >
+
+                        <div class="chatbot-foto-placeholder" style="display:none;" aria-hidden="true">
+                            💬
+                        </div>
+
+                        <div class="tarjeta-contenido">
+                            <h3>ChatBot EDUSEX 💜</h3>
+                            <p>
+                                Explora respuestas educativas a preguntas
+                                sobre salud sexual, métodos anticonceptivos,
+                                prevención y bienestar juvenil.
+                            </p>
+                            <a class="btn" href="chatbot.html">
+                                Consultar ChatBot
+                            </a>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ===== PIE DE PÁGINA ===== -->
+    <footer class="footer">
+        <p><strong>EDUSEX</strong> | Proyecto educativo del CECyTEM</p>
+        <p>Informar, orientar y promover decisiones responsables.</p>
+        <p>
+            Este sitio es educativo y no sustituye la orientación
+            de un profesional de la salud.
+        </p>
+    </footer>
+
+    <!-- ===== SALUDO PERSONALIZADO ===== -->
+    <script>
+        const formulario = document.getElementById("formUsuario");
+        const campoNombre = document.getElementById("nombreUsuario");
+        const saludo = document.getElementById("saludo");
+
+        formulario.addEventListener("submit", function(evento) {
+            evento.preventDefault();
+
+            const nombre = campoNombre.value.trim();
+
+            if (nombre) {
+                saludo.textContent =
+                    "¡Bienvenido/a a EDUSEX, " + nombre + "!";
+            } else {
+                saludo.textContent = "¡Bienvenido/a a EDUSEX!";
+            }
+
+            document.getElementById("menu").scrollIntoView({
+                behavior: "smooth"
+            });
+        });
+    </script>
+
+</body>
+</html>

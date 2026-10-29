@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Chatbot educativo EDUSEX sobre salud sexual, anticonceptivos, consentimiento y prevención.">
+<title>ChatBot | EDUSEX</title>
+
+<style>
+:root {
+    --morado: #68097E;
+    --rosa: #C91C7A;
+    --rosa-claro: #f5a6d5;
+    --morado-suave: #f4e7f7;
+    --fondo: #edf3fa;
+    --blanco: #ffffff;
+    --texto: #26384a;
+    --borde: #dce5ee;
+    --turquesa: #dff8f6;
+    --oscuro: #28152d;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--fondo);
+    color: var(--texto);
+    line-height: 1.6;
+}
+
+/* ENCABEZADO */
+header {
+    text-align: center;
+    padding: 25px 18px 20px;
+    background: linear-gradient(135deg, var(--morado), var(--rosa));
+    color: white;
+}
+
+.brand {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.brand img {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+    border-radius: 50%;
+    background: white;
+    border: 2px solid var(--rosa-claro);
+}
+
+h1 {
+    color: white;
+    font-size: clamp(26px, 4vw, 40px);
+    margin: 0;
+}
+
+header p {
+    font-size: 16px;
+    max-width: 800px;
+    margin: 14px auto 0;
+}
+
+/* NAVEGACIÓN */
+nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    background: white;
+    padding: 12px;
+    box-shadow: 0 3px 12px #28152d0c;
+}
+
+nav a {
+    padding: 9px 11px;
+    border-radius: 8px;
+    color: var(--morado);
+    font-weight: bold;
+    text-decoration: none;
+    transition: background .2s, color .2s;
+}
+
+nav a:hover,
+nav a:focus-visible {
+    background: var(--morado-suave);
+    color: var(--rosa);
+}
+
+/* DISTRIBUCIÓN PRINCIPAL */
+.layout {
+    max-width: 1400px;
+    margin: 25px auto 35px;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: minmax(280px, .82fr) minmax(0, 1.25fr);
+    gap: 24px;
+}
+
+.panel {
+    background: white;
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 8px 24px #23394e14;
+    min-width: 0;
+    border: 1px solid #ffffff;
+}
+
+.panel h2 {
+    color: var(--morado);
+    font-size: 25px;
+    margin: 0 0 18px;
+}
+
+/* BUSCADOR */
+#buscar {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #cdb5d5;
+    border-radius: 11px;
+    font-size: 16px;
+    margin-bottom: 14px;
+    outline: none;
+    background: #fff;
+    color: var(--texto);
+}
+
+#buscar:focus,
+form input:focus {
+    border-color: var(--rosa);
+    box-shadow: 0 0 0 3px #c91c7a1c;
+}
+
+/* LISTA DE PREGUNTAS */
+#lista {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    max-height: 570px;
+    overflow-y: auto;
+    padding: 2px 5px 2px 0;
+}
+
+.pregunta {
+    width: 100%;
+    text-align: left;
+    border: 1px solid var(--borde);
+    background: #fcf8fd;
+    color: var(--texto);
+    border-radius: 11px;
+    padding: 13px 14px;
+    font-size: 15px;
+    line-height: 1.45;
+    cursor: pointer;
+    transition: background .2s, border-color .2s, transform .2s;
+}
+
+.pregunta:hover,
+.pregunta:focus-visible {
+    background: var(--morado-suave);
+    border-color: #c69bd4;
+    transform: translateX(2px);
+    outline: none;
+}
+
+.nota {
+    color: #657381;
+    line-height: 1.5;
+    font-size: 13px;
+    margin: 16px 0 0;
+}
+
+/* CHAT */
+.chatpanel {
+    display: flex;
+    flex-direction: column;
+}
+
+.mensajes {
+    height: 520px;
+    overflow-y: auto;
+    background: #f9f4fa;
+    border: 1px solid #f0e4f3;
+    border-radius: 14px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    margin-bottom: 14px;
+}
+
+.mensaje {
+    max-width: 92%;
+    border-radius: 16px;
+    padding: 13px 15px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+    white-space: pre-wrap;
+}
+
+.mensaje strong {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+.bot {
+    align-self: flex-start;
+    background: var(--morado-suave);
+    color: #382541;
+    border-left: 4px solid var(--morado);
+    border-bottom-left-radius: 4px;
+}
+
+.usuario {
+    align-self: flex-end;
+    background: var(--morado);
+    color: white;
+    border-bottom-right-radius: 4px;
+}
+
+/* FORMULARIO */
+form {
+    display: flex;
+    gap: 10px;
+}
+
+form input {
+    min-width: 0;
+    flex: 1;
+    padding: 14px 15px;
+    border: 1px solid #cdb5d5;
+    border-radius: 11px;
+    font-size: 16px;
+    outline: none;
+}
+
+.btn {
+    border: 0;
+    border-radius: 11px;
+    padding: 13px 19px;
+    background: var(--morado);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 15px;
+    transition: background .2s, transform .2s;
+}
+
+.btn:hover {
+    background: var(--rosa);
+}
+
+.btn:focus-visible {
+    outline: 3px solid var(--rosa-claro);
+    outline-offset: 3px;
+}
+
+.btn:active {
+    transform: scale(.98);
+}
+
+.acciones {
+    margin-top: 12px;
+}
+
+#limpiar {
+    background: #fff;
+    color: var(--morado);
+    border: 1px solid #c69bd4;
+}
+
+#limpiar:hover {
+    background: var(--morado-suave);
+    color: var(--rosa);
+}
+
+/* PIE DE PÁGINA */
+footer {
+    text-align: center;
+    padding: 23px;
+    color: white;
+    background: var(--morado);
+    font-size: 14px;
+}
+
+footer p {
+    margin: 5px;
+}
+
+/* MENSAJES DE ACCESIBILIDAD */
+#estado {
+    color: var(--morado);
+    font-size: 13px;
+    min-height: 18px;
+}
+
+/* DISEÑO RESPONSIVO */
+@media (max-width: 850px) {
+    .layout {
+        grid-template-columns: 1fr;
+    }
+
+    .mensajes {
+        height: 420px;
+    }
+
+    #lista {
+        max-height: 330px;
+    }
+}
+
+@media (max-width: 520px) {
+    .layout {
+        padding: 0 12px;
+        gap: 15px;
+        margin-top: 16px;
+    }
+
+    .panel {
+        padding: 17px;
+        border-radius: 15px;
+    }
+
+    .panel h2 {
+        font-size: 22px;
+    }
+
+    nav a {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    form {
+        flex-wrap: wrap;
+    }
+
+    form input,
+    form .btn {
+        flex-basis: 100%;
+    }
+
+    .mensaje {
+        max-width: 100%;
+    }
+
+    .mensajes {
+        height: 50vh;
+        min-height: 300px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="brand">
+        <img src="logo.jpeg" alt="Logo EDUSEX"
+             onerror="this.style.display='none'">
+        <h1>💬 ChatBot EDUSEX</h1>
+    </div>
+    <p>
+        ¡Hola! Soy el asistente virtual de EDUSEX.
+        Pregúntame sobre salud sexual, anticonceptivos,
+        consentimiento y prevención.
+    </p>
+</header>
+
+<nav aria-label="Navegación principal">
+    <a href="index.html">Inicio</a>
+    <a href="informacion.html">Información</a>
+    <a href="metodos.html">Métodos anticonceptivos</a>
+    <a href="centros.html">Centros de consulta</a>
+    <a href="chatbot.html">ChatBot</a>
+    <a href="preguntas.html">Preguntas frecuentes</a>
+</nav>
+
+<main class="layout">
+
+    <section class="panel">
+        <h2>📚 <span id="total">0</span> preguntas</h2>
+
+        <input
+            id="buscar"
+            type="search"
+            placeholder="Buscar una pregunta..."
+            aria-label="Buscar una pregunta"
+        >
+
+        <div id="lista"></div>
+
+        <p class="nota">
+            Selecciona una pregunta para verla en la conversación.
+        </p>
+    </section>
+
+    <section class="panel chatpanel">
+        <h2>💬 Conversación</h2>
+
+        <div id="mensajes" class="mensajes" aria-live="polite">
+            <div class="mensaje bot">
+                <strong>EDUSEX</strong>
+                ¡Bienvenido! Selecciona una pregunta de la lista
+                o escribe palabras como “condón”, “menstruación”
+                o “consentimiento”.
+            </div>
+        </div>
+
+        <form id="formulario">
+            <input
+                id="entrada"
+                type="text"
+                placeholder="Escribe tu pregunta..."
+                aria-label="Escribe tu pregunta"
+                autocomplete="off"
+                required
+            >
+            <button class="btn" type="submit">Enviar</button>
+        </form>
+
+        <p id="estado" aria-live="polite"></p>
+
+        <div class="acciones">
+            <button id="limpiar" class="btn" type="button">
+                Limpiar conversación
+            </button>
+        </div>
+
+        <p class="nota">
+            Este chatbot responde con información educativa general.
+            No diagnostica ni sustituye una consulta médica.
+            Si no reconoce una pregunta, te sugerirá temas relacionados.
+        </p>
+    </section>
+
+</main>
+
+<footer>
+    <p>© 2026 EDUSEX | CECyTEM Villa Victoria</p>
+    <p>Infórmate y decide con libertad 💜</p>
+</footer>
+
+<script>
+const datos = [
+["¿Qué es la salud sexual?","salud sexual","La salud sexual es el bienestar físico, emocional y social relacionado con la sexualidad. Incluye información confiable, respeto, consentimiento y acceso a servicios de salud."],
+["¿Qué es la salud reproductiva?","salud reproductiva","Es el bienestar relacionado con el sistema reproductivo y las decisiones informadas sobre la reproducción."],
+["¿Qué cambios ocurren durante la adolescencia?","adolescencia|adolescente","La adolescencia es una etapa de cambios físicos, emocionales y sociales. Cada persona se desarrolla a su propio ritmo."],
+["¿Qué es la pubertad?","pubertad","La pubertad es el proceso de cambios físicos y hormonales que ocurre durante el crecimiento."],
+["¿Qué es la menstruación?","menstruacion|regla|periodo menstrual","La menstruación es el sangrado que suele ocurrir como parte del ciclo menstrual. La duración y frecuencia pueden variar."],
+["¿Por qué puede ser irregular la menstruación?","periodo irregular|regla irregular|ciclo irregular","Las irregularidades pueden ser comunes durante la adolescencia. Si el sangrado es muy abundante o el dolor es intenso, consulta a un profesional de salud."],
+["¿Qué es la ovulación?","ovulacion","La ovulación ocurre cuando un ovario libera un óvulo. Su momento puede variar; calcular días no es un método anticonceptivo confiable por sí solo."],
+["¿Qué es el ciclo menstrual?","ciclo menstrual","Es el conjunto de cambios hormonales que prepara al cuerpo para un posible embarazo. Se cuenta desde el primer día de una menstruación hasta el inicio de la siguiente."],
+["¿Qué es un embarazo adolescente?","embarazo adolescente|embarazo en adolescentes","Es un embarazo que ocurre durante la adolescencia. La información, la prevención y el acceso a servicios de salud ayudan a tomar decisiones informadas."],
+["¿Cómo se puede prevenir un embarazo?","prevenir embarazo|evitar embarazo|embarazo no planeado","La prevención incluye información y métodos anticonceptivos. El condón ayuda a reducir el riesgo de embarazo y de muchas ITS. Un profesional puede orientarte sobre otros métodos."],
+["¿Qué métodos anticonceptivos existen?","metodos anticonceptivos|tipos de anticonceptivos","Existen condones, pastillas, implantes, inyecciones, dispositivos intrauterinos y otros métodos. No todos protegen contra las ITS."],
+["¿Para qué sirve el condón?","condon|preservativo","El condón ayuda a prevenir embarazos y reduce el riesgo de muchas infecciones de transmisión sexual cuando se utiliza correctamente."],
+["¿Las pastillas anticonceptivas protegen contra las ITS?","pastillas anticonceptivas","Las pastillas anticonceptivas ayudan a prevenir el embarazo, pero no protegen contra las infecciones de transmisión sexual."],
+["¿Qué es el implante anticonceptivo?","implante anticonceptivo|implante","El implante es una pequeña varilla que personal capacitado coloca bajo la piel del brazo. Libera hormona para prevenir el embarazo durante un periodo determinado."],
+["¿Qué es el DIU?","diu|dispositivo intrauterino","El DIU es un dispositivo que coloca personal de salud dentro del útero. Hay tipos hormonales y de cobre."],
+["¿Qué es la inyección anticonceptiva?","inyeccion anticonceptiva","Es un método hormonal aplicado a intervalos establecidos. No protege contra las ITS."],
+["¿Qué es la anticoncepción de emergencia?","anticoncepcion de emergencia|pastilla del dia siguiente|pastilla de emergencia","La anticoncepción de emergencia puede reducir la posibilidad de embarazo después de una relación sin protección o una falla anticonceptiva. Funciona mejor cuanto antes se utiliza; solicita orientación profesional."],
+["¿Es confiable el coito interrumpido?","coito interrumpido","Es menos confiable que otros métodos anticonceptivos y no protege contra las ITS."],
+["¿Los anticonceptivos causan infertilidad?","fertilidad|infertilidad|anticonceptivos infertilidad","La mayoría de los métodos anticonceptivos reversibles no causan infertilidad permanente. El tiempo para recuperar la fertilidad puede variar según el método."],
+["¿Qué son las ITS?","its|infecciones de transmision sexual|enfermedades sexuales","Las ITS son infecciones que pueden transmitirse principalmente por contacto sexual. Algunas no producen síntomas."],
+["¿Qué es el VIH?","vih","VIH significa virus de la inmunodeficiencia humana. Afecta al sistema inmunitario y existe tratamiento que permite controlar la infección."],
+["¿Cuál es la diferencia entre VIH y sida?","vih y sida|diferencia entre vih y sida","El VIH es el virus; el sida es una etapa avanzada de la infección cuando no se recibe tratamiento adecuado."],
+["¿Cómo se pueden prevenir las ITS?","prevenir its|prevencion its","El uso correcto del condón, las pruebas, las vacunas disponibles y la atención médica ayudan a reducir riesgos."],
+["¿Una ITS puede no tener síntomas?","its sin sintomas|sin sintomas","Sí, algunas ITS pueden no presentar síntomas. Si hubo una posible exposición, consulta sobre pruebas y prevención."],
+["¿Qué hago si creo tener una ITS?","sintomas its|creo que tengo una its|posible its","Acude a un centro de salud para recibir orientación y pruebas. Evita automedicarte."],
+["¿Qué es el VPH?","vph|papiloma humano","El virus del papiloma humano es común. Algunos tipos pueden causar verrugas y otros se relacionan con ciertos cánceres. La vacunación ayuda a prevenir complicaciones."],
+["¿Existe una vacuna contra el VPH?","vacuna vph|vacuna papiloma","Sí, existe una vacuna contra el VPH. Pregunta en tu centro de salud por las recomendaciones y el esquema disponible."],
+["¿Qué es el consentimiento?","consentimiento","El consentimiento es un acuerdo libre, claro e informado. Puede retirarse en cualquier momento; la presión o el miedo no significan consentimiento."],
+["¿Puedo cambiar de opinión?","cambiar de opinion|retirar consentimiento","Sí. Cualquier persona puede cambiar de opinión en cualquier momento y la otra persona debe respetar esa decisión."],
+["¿Qué son los límites personales?","limites personales|poner limites","Los límites personales expresan qué te hace sentir cómodo o incómodo. Puedes comunicarlos con claridad y pedir apoyo si no se respetan."],
+["¿Qué hago si mi pareja me presiona?","me presiona|presion sexual|presion de pareja","No tienes que hacer nada que no quieras. Busca apoyo de una persona adulta de confianza, orientador escolar o profesional de salud."],
+["¿Cómo es una relación saludable?","relacion saludable|relacion sana","Una relación saludable incluye respeto, confianza, comunicación, límites y libertad. No debe incluir amenazas, control ni presión."],
+["¿Qué es la violencia en el noviazgo?","violencia en el noviazgo|abuso en pareja","La violencia puede incluir control, amenazas, insultos, aislamiento o agresiones. No es culpa de quien la vive; busca apoyo seguro."],
+["¿Qué riesgos tiene compartir imágenes íntimas?","sexting|foto intima|comparten una foto|difunden imagen","Compartir imágenes íntimas puede implicar riesgos de privacidad y presión. Nunca debes sentirte obligado a enviar contenido íntimo. Si alguien difunde una imagen tuya, pide ayuda a una persona de confianza y reporta el contenido."],
+["¿Cómo puedo cuidar mi privacidad digital?","privacidad digital|seguridad digital","Protege tus datos, usa contraseñas seguras, revisa la privacidad de tus cuentas y evita compartir información íntima por presión."],
+["¿Cómo hablo con mi pareja sobre anticonceptivos?","hablar con mi pareja|hablar anticonceptivos","Busca un momento tranquilo, expresa tus límites y escucha a la otra persona. La decisión debe ser libre y sin presión."],
+["¿Hay servicios de salud para adolescentes?","servicios para adolescentes|edad centro de salud","Puedes solicitar información preventiva durante la adolescencia. Pregunta qué servicios para adolescentes ofrece tu unidad de salud."],
+["¿Puedo informarme si no tengo vida sexual?","sin vida sexual|aunque no tenga vida sexual","¡Claro que puedes informarte! Aprender sobre salud sexual ayuda a conocer tus derechos y tomar decisiones informadas."],
+["¿Qué es la educación sexual integral?","educacion sexual integral|educacion sexual","Es información adecuada a la edad sobre el cuerpo, las emociones, las relaciones, el consentimiento, la prevención y los derechos."],
+["¿Qué retos puede enfrentar un embarazo adolescente?","riesgos embarazo adolescente|complicaciones embarazo","Puede implicar mayores necesidades de atención médica y retos escolares, familiares y económicos. Cada situación requiere atención respetuosa."],
+["¿Cómo apoyar a una amiga embarazada?","apoyar adolescente embarazada|amiga embarazada","Escucha sin juzgar, respeta sus decisiones y anímala a recibir atención prenatal y apoyo de personas de confianza."],
+["¿Qué hago si creo que estoy embarazada?","creo que estoy embarazada|posible embarazo|prueba embarazo","Una prueba de embarazo puede ayudar a aclararlo. Acude a un centro de salud para recibir orientación y atención."],
+["¿Cuándo puedo hacerme una prueba de embarazo?","cuando hacer prueba embarazo|prueba de embarazo cuando","Muchas pruebas son más confiables desde el primer día de retraso menstrual. Sigue las instrucciones y consulta si el retraso continúa."],
+["¿Qué es la planificación familiar?","planificacion familiar","La planificación familiar ayuda a tomar decisiones informadas sobre si tener hijos y cuándo, con acceso a anticonceptivos y orientación."],
+["¿Cuáles son los derechos sexuales y reproductivos?","derechos sexuales|derechos reproductivos","Incluyen el derecho a recibir información, acceder a servicios de salud, tener privacidad y tomar decisiones libres de violencia y discriminación."],
+["¿Qué significa la confidencialidad médica?","confidencialidad medica|confidencialidad","El personal de salud protege tu información privada, con excepciones previstas por la ley. Puedes preguntar cómo se maneja la confidencialidad."],
+["¿Qué hago si me da pena preguntar?","pena preguntar|me da pena|verguenza preguntar","Es normal sentir vergüenza. Puedes escribir tus preguntas o hablar en privado con personal de salud. Mereces recibir información respetuosa."],
+["¿Dónde puedo recibir orientación confiable?","orientacion confiable|donde recibir ayuda|centro de salud","Puedes acudir a un centro de salud o a servicios de atención para adolescentes. Visita la sección Centros de consulta de EDUSEX para buscar opciones."],
+["¿Qué hago ante una urgencia de salud?","duda urgente|urgencia de salud","Este chatbot no diagnostica. Ante dolor intenso, sangrado abundante, desmayo o peligro inmediato, busca atención médica urgente."],
+["¿Es recomendable automedicarse?","automedicarme|automedicacion","No es recomendable automedicarse. Los síntomas pueden tener distintas causas; consulta a un profesional de salud."],
+["¿Cuándo debo hacerme una prueba de ITS o VIH?","prueba de its|pruebas its|prueba vih","Las pruebas buscan detectar una infección específica. El tipo y el momento adecuado dependen de cada situación; consulta a un servicio de salud."],
+["¿Qué es la doble protección?","doble proteccion","La doble protección combina un método anticonceptivo eficaz para prevenir el embarazo con el condón para reducir el riesgo de ITS."],
+["¿Qué efectos secundarios pueden tener los anticonceptivos?","efectos secundarios anticonceptivos|efectos anticonceptivos","Los efectos dependen del método y de la persona. Si son intensos o te preocupan, consulta al personal de salud."],
+["¿Qué hago si vivo abuso sexual?","abuso sexual|vivi abuso|sufri abuso|me paso algo sexual","No es tu culpa. Busca apoyo de una persona adulta de confianza o profesional de salud. Si estás en peligro inmediato, contacta servicios de emergencia."],
+["¿Qué es la orientación sexual?","orientacion sexual","La orientación sexual describe hacia quién puede sentir una persona atracción afectiva, romántica o sexual. Todas las personas merecen respeto."],
+["¿Qué es la identidad de género?","identidad de genero","La identidad de género es la vivencia interna que cada persona tiene de su género. Todas las personas deben ser tratadas con respeto."],
+["¿Por qué es importante respetar la diversidad?","diversidad|respeto a la diversidad","Respetar la diversidad significa tratar a las personas con dignidad, sin burlas, discriminación ni violencia."],
+["¿Cómo puedo cuidar mi bienestar emocional?","bienestar emocional|salud emocional","Habla con personas de confianza, descansa y busca apoyo profesional si algo te preocupa o afecta tu vida cotidiana."],
+["¿El chatbot puede sustituir a un médico?","reemplaza medico|es un medico|diagnostico","No. EDUSEX ofrece información educativa general; no puede diagnosticar ni sustituir una consulta médica."]
+];
+
+/* NORMALIZAR TEXTO: IGNORA ACENTOS Y SIGNOS */
+function norm(texto) {
+    return texto
+        .toLocaleLowerCase("es-MX")
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[¿?¡!.,;:()[\]{}"'¡!]/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+}
+
+const lista = document.getElementById("lista");
+const buscar = document.getElementById("buscar");
+const mensajes = document.getElementById("mensajes");
+const entrada = document.getElementById("entrada");
+const estado = document.getElementById("estado");
+
+document.getElementById("total").textContent = datos.length;
+
+/* MOSTRAR MENSAJES */
+function addMessage(texto, tipo, nombre) {
+    const mensaje = document.createElement("div");
+    mensaje.className = "mensaje " + tipo;
+
+    const nombreElemento = document.createElement("strong");
+    nombreElemento.textContent = nombre;
+
+    mensaje.appendChild(nombreElemento);
+    mensaje.appendChild(document.createTextNode(texto));
+
+    mensajes.appendChild(mensaje);
+    mensajes.scrollTop = mensajes.scrollHeight;
+}
+
+/* RESPUESTAS Y BÚSQUEDA POR PALABRAS */
+function answer(preguntaUsuario) {
+    const texto = norm(preguntaUsuario);
+    const palabrasUsuario = texto.split(" ").filter(p => p.length > 2);
+
+    let mejorRespuesta = null;
+    let mejorPuntuacion = 0;
+
+    for (const dato of datos) {
+        const preguntaBase = norm(dato[0]);
+        const palabrasBase = preguntaBase.split(" ").filter(p => p.length > 2);
+
+        // Coincidencia con la pregunta completa
+        if (texto === preguntaBase) {
+            return dato[2];
+        }
+
+        // Coincidencia con palabras clave
+        for (const palabraClave of dato[1].split("|")) {
+            const clave = norm(palabraClave);
+
+            if (texto === clave || texto.includes(clave)) {
+                const puntuacion = 100 + clave.length;
+
+                if (puntuacion > mejorPuntuacion) {
+                    mejorPuntuacion = puntuacion;
+                    mejorRespuesta = dato;
+                }
+            } else if (clave.includes(texto) && texto.length >= 4) {
+                const puntuacion = 45 + texto.length;
+
+                if (puntuacion > mejorPuntuacion) {
+                    mejorPuntuacion = puntuacion;
+                    mejorRespuesta = dato;
+                }
+            }
+        }
+
+        // Comparar palabras importantes de la pregunta
+        const palabrasClave = dato[1]
+            .split("|")
+            .map(norm);
+
+        for (const clave of palabrasClave) {
+            const palabras = clave.split(" ").filter(p => p.length > 2);
+            if (!palabras.length) continue;
+
+            const coincidencias = palabras.filter(p =>
+                palabrasUsuario.includes(p)
+            ).length;
+
+            if (coincidencias > 0) {
+                let puntuacion = (coincidencias / palabras.length) * 35;
+
+                // Favorecer coincidencias de frases más específicas
+                if (coincidencias === palabras.length) {
+                    puntuacion += 15;
+                }
+
+                if (puntuacion > mejorPuntuacion) {
+                    mejorPuntuacion = puntuacion;
+                    mejorRespuesta = dato;
+                }
+            }
+        }
+
+        // Buscar también términos de la pregunta original
+        const coincidenciasPregunta = palabrasBase.filter(p =>
+            palabrasUsuario.includes(p)
+        ).length;
+
+        if (palabrasBase.length && coincidenciasPregunta >= 2) {
+            const puntuacion =
+                (coincidenciasPregunta / palabrasBase.length) * 32;
+
+            if (puntuacion > mejorPuntuacion) {
+                mejorPuntuacion = puntuacion;
+                mejorRespuesta = dato;
+            }
+        }
+    }
+
+    if (mejorRespuesta && mejorPuntuacion >= 20) {
+        return mejorRespuesta[2];
+    }
+
+    return "No encontré una respuesta adecuada para esa pregunta. Intenta escribirla de otra manera o selecciona un tema de la lista. Puedes preguntar sobre métodos anticonceptivos, condón, ITS, menstruación, consentimiento o centros de salud.";
+}
+
+/* ENVIAR PREGUNTA */
+function send(texto) {
+    const pregunta = texto.trim();
+    if (!pregunta) return;
+
+    addMessage(pregunta, "usuario", "Tú");
+
+    const respuesta = answer(pregunta);
+    addMessage(respuesta, "bot", "EDUSEX");
+
+    estado.textContent = "Respuesta generada.";
+    entrada.value = "";
+    entrada.focus();
+}
+
+/* DIBUJAR Y FILTRAR PREGUNTAS */
+function draw(filtro = "") {
+    lista.innerHTML = "";
+
+    const textoFiltro = norm(filtro);
+
+    const encontradas = datos
+        .map((dato, indice) => ({ dato, indice }))
+        .filter(({ dato }) =>
+            norm(dato[0] + " " + dato[1]).includes(textoFiltro)
+        );
+
+    if (!encontradas.length) {
+        const aviso = document.createElement("p");
+        aviso.textContent = "No encontré preguntas con ese texto. Intenta con otra palabra.";
+        aviso.className = "nota";
+        lista.appendChild(aviso);
+        return;
+    }
+
+    encontradas.forEach(({ dato, indice }) => {
+        const boton = document.createElement("button");
+        boton.className = "pregunta";
+        boton.type = "button";
+        boton.textContent = (indice + 1) + ". " + dato[0];
+
+        boton.addEventListener("click", () => {
+            send(dato[0]);
+        });
+
+        lista.appendChild(boton);
+    });
+}
+
+/* EVENTOS */
+document.getElementById("formulario").addEventListener("submit", evento => {
+    evento.preventDefault();
+    send(entrada.value);
+});
+
+buscar.addEventListener("input", () => {
+    draw(buscar.value);
+});
+
+document.getElementById("limpiar").addEventListener("click", () => {
+    mensajes.innerHTML = "";
+
+    addMessage(
+        "¡Bienvenido! Selecciona una pregunta de la lista o escribe palabras como “condón”, “menstruación” o “consentimiento”.",
+        "bot",
+        "EDUSEX"
+    );
+
+    estado.textContent = "Conversación limpiada.";
+    entrada.focus();
+});
+
+/* INICIAR CHATBOT */
+draw();
+</script>
+
+</body>
+</html>

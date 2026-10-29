@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Conoce los métodos anticonceptivos y las opciones de prevención en EDUSEX.">
+
+    <title>EDUSEX | Métodos anticonceptivos</title>
+    <link rel="stylesheet" href="estilos.css">
+
+    <style>
+        /* =========================
+           BARRA DE NAVEGACIÓN
+           COLORES ORIGINALES
+        ========================= */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding: 10px 22px;
+            background: #ffffff;
+            box-shadow: 0 4px 14px rgba(63, 25, 77, 0.15);
+        }
+
+        .navbar .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            flex-shrink: 0;
+            color: #3F194D;
+            text-decoration: none;
+            font-size: 22px;
+            font-weight: 800;
+        }
+
+        .navbar .logo img {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+            border-radius: 50%;
+            background: #ffffff;
+        }
+
+        .navbar .marca-sex {
+            color: #C91C7A;
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .navbar .nav-links a {
+            display: inline-block;
+            padding: 9px 10px;
+            border-radius: 8px;
+            color: #3F194D;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .navbar .nav-links a:hover {
+            background: #F0DFF5;
+            color: #C91C7A;
+        }
+
+        /* =========================
+           TARJETAS E IMÁGENES
+        ========================= */
+        .tarjeta .imagen-tarjeta {
+            display: block;
+            width: 100%;
+            cursor: zoom-in;
+            transition: transform 0.25s;
+        }
+
+        .tarjeta .imagen-tarjeta:hover {
+            transform: scale(1.02);
+        }
+
+        /* =========================
+           VISOR PARA AMPLIAR IMÁGENES
+        ========================= */
+        .visor-imagen {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 25px;
+            background: rgba(25, 10, 30, 0.90);
+        }
+
+        .visor-imagen.activo {
+            display: flex;
+        }
+
+        .visor-contenido {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        .visor-contenido img {
+            display: block;
+            max-width: 95%;
+            max-height: 88vh;
+            object-fit: contain;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+        }
+
+        .visor-cerrar {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 44px;
+            height: 44px;
+            border: none;
+            border-radius: 50%;
+            background: #C91C7A;
+            color: #ffffff;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        .visor-cerrar:hover {
+            background: #3F194D;
+        }
+
+        .visor-ayuda {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            color: #ffffff;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+        @media (max-width: 700px) {
+            .navbar {
+                justify-content: center;
+                padding: 10px;
+            }
+
+            .navbar .logo {
+                justify-content: center;
+            }
+
+            .navbar .nav-links {
+                width: 100%;
+                gap: 3px;
+            }
+
+            .navbar .nav-links a {
+                padding: 7px 8px;
+                font-size: 12px;
+            }
+
+            .navbar .logo img {
+                width: 42px;
+                height: 42px;
+            }
+
+            .visor-imagen {
+                padding: 12px;
+            }
+
+            .visor-contenido img {
+                max-width: 100%;
+                max-height: 82vh;
+            }
+
+            .visor-cerrar {
+                top: 5px;
+                right: 5px;
+            }
+
+            .visor-ayuda {
+                bottom: 5px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVEGACIÓN CON LOGO
+    ========================= -->
+    <nav class="navbar" aria-label="Navegación principal">
+
+        <a href="index.html" class="logo">
+            <img src="logo.jpeg" alt="Logotipo de EDUSEX">
+            <span>EDU<span class="marca-sex">SEX</span></span>
+        </a>
+
+        <div class="nav-links">
+            <a href="index.html">Inicio</a>
+            <a href="informacion.html">Información</a>
+            <a href="metodos.html">Métodos</a>
+            <a href="centros.html">Centros de apoyo</a>
+            <a href="preguntas.html">Preguntas</a>
+            <a href="material.html">Material</a>
+            <a href="campanas.html">Campañas</a>
+        </div>
+
+    </nav>
+
+    <!-- =========================
+         ENCABEZADO
+    ========================= -->
+    <header class="encabezado-pagina">
+        <h1>Métodos anticonceptivos</h1>
+        <p>Conoce las opciones y busca orientación profesional.</p>
+    </header>
+
+    <main class="contenido">
+
+        <div class="aviso">
+            Los métodos tienen características, niveles de eficacia y requisitos
+            diferentes. Un profesional de salud puede ayudarte a elegir una opción
+            adecuada. El preservativo también ayuda a reducir el riesgo de muchas
+            infecciones de transmisión sexual.
+        </div>
+
+        <!-- =========================
+             TARJETAS DE MÉTODOS
+        ========================= -->
+        <div class="grid">
+
+            <article class="tarjeta">
+
+                <img
+                    class="imagen-tarjeta"
+                    src="condon.jpeg"
+                    alt="Imagen educativa sobre el preservativo"
+                    loading="lazy"
+                    tabindex="0"
+                >
+
+                <div class="tarjeta-contenido">
+                    <h3>Preservativo o condón</h3>
+                    <p>
+                        Es un método de barrera. Utilizado correctamente,
+                        ayuda a prevenir embarazos y reduce el riesgo de muchas
+                        infecciones de transmisión sexual.
+                    </p>
+                </div>
+
+            </article>
+
+            <article class="tarjeta">
+
+                <img
+                    class="imagen-tarjeta"
+                    src="pastillita.jpeg"
+                    alt="Imagen educativa sobre anticonceptivos orales"
+                    loading="lazy"
+                    tabindex="0"
+                >
+
+                <div class="tarjeta-contenido">
+                    <h3>Pastillas anticonceptivas</h3>
+                    <p>
+                        Son medicamentos hormonales que ayudan a prevenir el
+                        embarazo. Requieren uso adecuado y orientación sanitaria.
+                        No protegen contra las infecciones de transmisión sexual.
+                    </p>
+                </div>
+
+            </article>
+
+            <article class="tarjeta">
+
+                <img
+                    class="imagen-tarjeta"
+                    src="implante.jpeg"
+                    alt="Imagen educativa sobre el implante"
+                    loading="lazy"
+                    tabindex="0"
+                >
+
+                <div class="tarjeta-contenido">
+                    <h3>Implante subdérmico</h3>
+                    <p>
+                        Es un método hormonal de larga duración que coloca
+                        personal capacitado debajo de la piel del brazo.
+                        No protege contra las infecciones de transmisión sexual.
+                    </p>
+                </div>
+
+            </article>
+
+            <article class="tarjeta">
+
+                <img
+                    class="imagen-tarjeta"
+                    src="diu.jpeg"
+                    alt="Imagen educativa sobre el dispositivo intrauterino"
+                    loading="lazy"
+                    tabindex="0"
+                >
+
+                <div class="tarjeta-contenido">
+                    <h3>Dispositivo intrauterino (DIU)</h3>
+                    <p>
+                        Es un método de larga duración que coloca personal
+                        de salud capacitado. Existen diferentes tipos.
+                    </p>
+                </div>
+
+            </article>
+
+            <article class="tarjeta">
+
+                <img
+                    class="imagen-tarjeta"
+                    src="inyeccion.jpeg"
+                    alt="Imagen educativa sobre anticoncepción inyectable"
+                    loading="lazy"
+                    tabindex="0"
+                >
+
+                <div class="tarjeta-contenido">
+                    <h3>Inyección anticonceptiva</h3>
+                    <p>
+                        Es un método hormonal que se administra según el
+                        intervalo correspondiente a cada presentación.
+                        Necesita orientación profesional.
+                    </p>
+                </div>
+
+            </article>
+
+            <article class="tarjeta">
+
+                <img
+                    class="imagen-tarjeta"
+                    src="pastilla.jpeg"
+                    alt="Imagen educativa sobre anticoncepción de emergencia"
+                    loading="lazy"
+                    tabindex="0"
+                >
+
+                <div class="tarjeta-contenido">
+                    <h3>Anticoncepción de emergencia</h3>
+                    <p>
+                        Puede reducir la posibilidad de embarazo después de una
+                        relación sexual sin protección o de una falla del método.
+                        Debe utilizarse cuanto antes según las indicaciones
+                        del producto y de personal de salud.
+                    </p>
+                </div>
+
+            </article>
+
+        </div>
+
+        <!-- =========================
+             ORIENTACIÓN PROFESIONAL
+        ========================= -->
+        <section class="bloque" style="margin-top: 25px;">
+
+            <h2>¿Dónde recibir orientación?</h2>
+
+            <p>
+                Acude a un centro de salud para recibir información confidencial
+                conforme a los servicios y normas aplicables, conocer las opciones
+                disponibles y resolver tus dudas.
+            </p>
+
+            <a href="centros.html" class="btn">
+                Ver centros de apoyo
+            </a>
+
+        </section>
+
+        <a class="btn" href="index.html">Volver al inicio</a>
+
+    </main>
+
+    <!-- =========================
+         VISOR DE IMÁGENES
+    ========================= -->
+    <div
+        class="visor-imagen"
+        id="visorImagen"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Vista ampliada de la imagen"
+        aria-hidden="true"
+    >
+
+        <div class="visor-contenido">
+
+            <button
+                class="visor-cerrar"
+                id="cerrarVisor"
+                type="button"
+                aria-label="Cerrar imagen"
+            >
+                &times;
+            </button>
+
+            <img id="imagenAmpliada" src="" alt="">
+
+            <p class="visor-ayuda">
+                Haz clic fuera de la imagen o presiona Esc para cerrar.
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- =========================
+         FUNCIONALIDAD DEL VISOR
+    ========================= -->
+    <script>
+        const visor = document.getElementById("visorImagen");
+        const imagenAmpliada = document.getElementById("imagenAmpliada");
+        const botonCerrar = document.getElementById("cerrarVisor");
+        const imagenes = document.querySelectorAll(".tarjeta .imagen-tarjeta");
+
+        function abrirVisor(imagen) {
+            imagenAmpliada.src = imagen.src;
+            imagenAmpliada.alt = imagen.alt;
+
+            visor.classList.add("activo");
+            visor.setAttribute("aria-hidden", "false");
+            document.body.style.overflow = "hidden";
+
+            botonCerrar.focus();
+        }
+
+        function cerrarVisor() {
+            visor.classList.remove("activo");
+            visor.setAttribute("aria-hidden", "true");
+            imagenAmpliada.src = "";
+            document.body.style.overflow = "";
+        }
+
+        imagenes.forEach(function(imagen) {
+            imagen.addEventListener("click", function() {
+                abrirVisor(imagen);
+            });
+
+            imagen.addEventListener("keydown", function(evento) {
+                if (evento.key === "Enter" || evento.key === " ") {
+                    evento.preventDefault();
+                    abrirVisor(imagen);
+                }
+            });
+        });
+
+        botonCerrar.addEventListener("click", cerrarVisor);
+
+        visor.addEventListener("click", function(evento) {
+            if (evento.target === visor) {
+                cerrarVisor();
+            }
+        });
+
+        document.addEventListener("keydown", function(evento) {
+            if (evento.key === "Escape" && visor.classList.contains("activo")) {
+                cerrarVisor();
+            }
+        });
+    </script>
+
+    <!-- =========================
+         PIE DE PÁGINA
+    ========================= -->
+    <footer class="footer">
+        <p><strong>EDUSEX</strong> | Infórmate y cuida tu bienestar.</p>
+        <p>Proyecto educativo del CECyTEM Villa Victoria.</p>
+    </footer>
+
+</body>
+</html>

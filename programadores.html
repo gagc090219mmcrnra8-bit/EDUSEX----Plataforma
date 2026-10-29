@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDUSEX | Galería del proceso</title>
+    <link rel="stylesheet" href="estilos.css">
+
+    <style>
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding: 10px 20px;
+            background: white;
+            box-shadow: 0 4px 14px rgba(63, 25, 77, 0.15);
+        }
+
+        .navbar .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            flex-shrink: 0;
+            color: #3F194D;
+            text-decoration: none;
+            font-size: 22px;
+            font-weight: 800;
+        }
+
+        .navbar .logo img {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+            border-radius: 50%;
+            background: white;
+        }
+
+        .navbar .logo .marca-sex {
+            color: #C91C7A;
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .navbar .nav-links a {
+            display: inline-block;
+            padding: 9px 10px;
+            border-radius: 8px;
+            color: #3F194D;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .navbar .nav-links a:hover {
+            background: #F0DFF5;
+            color: #68097E;
+        }
+
+        .galeria-proceso {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 22px;
+            margin: 25px 0;
+        }
+
+        .foto-proceso {
+            background: white;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 4px 14px rgba(63, 25, 77, 0.12);
+            transition: transform 0.2s;
+        }
+
+        .foto-proceso:hover {
+            transform: translateY(-5px);
+        }
+
+        .foto-proceso img {
+            display: block;
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+        }
+
+        .foto-proceso .descripcion {
+            padding: 15px;
+        }
+
+        .foto-proceso h3 {
+            margin-top: 0;
+            color: #3F194D;
+        }
+
+        .foto-proceso p {
+            margin-bottom: 0;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 700px) {
+            .navbar {
+                justify-content: center;
+                padding: 10px;
+            }
+
+            .navbar .logo {
+                justify-content: center;
+            }
+
+            .navbar .nav-links {
+                width: 100%;
+                gap: 3px;
+            }
+
+            .navbar .nav-links a {
+                padding: 7px 8px;
+                font-size: 12px;
+            }
+
+            .foto-proceso img {
+                height: 210px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar">
+    <a href="index.html" class="logo">
+        <img src="logo.jpeg" alt="Logotipo de EDUSEX">
+        <span>EDU<span class="marca-sex">SEX</span></span>
+    </a>
+
+    <div class="nav-links">
+        <a href="index.html">Inicio</a>
+        <a href="material.html">Material</a>
+        <a href="campanas.html">Campañas</a>
+    </div>
+</nav>
+
+<header class="encabezado-pagina">
+    <h1>Nuestro proceso</h1>
+    <p>Conoce cómo se fue creando el proyecto EDUSEX.</p>
+</header>
+
+<main class="contenido">
+
+    <section class="bloque">
+        <h2>Galería del proceso</h2>
+        <p>
+            En esta galería compartimos algunos momentos del desarrollo de
+            EDUSEX: la organización de ideas, la elaboración de materiales,
+            el diseño de la página y el trabajo colaborativo que hicimos
+            para crear un espacio informativo sobre educación sexual.
+        </p>
+    </section>
+
+    <section class="galeria-proceso">
+
+        <article class="foto-proceso">
+            <img src="1.jpeg" alt="Organización de ideas del proyecto">
+            <div class="descripcion">
+                <h3>Planeación del proyecto</h3>
+                <p>
+                    Comenzamos organizando nuestras ideas y definiendo los
+                    temas que queríamos compartir con la comunidad estudiantil.
+                </p>
+            </div>
+        </article>
+
+        <article class="foto-proceso">
+            <img src="2.jpeg" alt="Elaboración de materiales del proyecto">
+            <div class="descripcion">
+                <h3>Elaboración de materiales</h3>
+                <p>
+                    Trabajamos en la preparación de información y recursos
+                    para explicar los temas de manera clara y sencilla.
+                </p>
+            </div>
+        </article>
+
+        <article class="foto-proceso">
+            <img src="3.jpeg" alt="Diseño y desarrollo de la página web">
+            <div class="descripcion">
+                <h3>Diseño de la página</h3>
+                <p>
+                    Fuimos construyendo las secciones del sitio y organizando
+                    el contenido para que fuera fácil de consultar.
+                </p>
+            </div>
+        </article>
+
+        <article class="foto-proceso">
+            <img src="4.jpeg" alt="Trabajo colaborativo durante el proyecto">
+            <div class="descripcion">
+                <h3>Trabajo colaborativo</h3>
+                <p>
+                    Compartimos ideas, revisamos avances y colaboramos para
+                    mejorar cada parte de nuestro proyecto EDUSEX.
+                </p>
+            </div>
+        </article>
+
+    </section>
+
+    <section class="bloque">
+        <h2>Lo que aprendimos</h2>
+        <p>
+            Durante este proceso fortalecimos nuestras habilidades de
+            investigación, creatividad, organización y trabajo en equipo.
+            Cada avance nos ayudó a construir un recurso educativo que
+            promueve la información responsable y el cuidado de la salud.
+        </p>
+    </section>
+
+    <a class="btn" href="index.html">Volver al inicio</a>
+
+</main>
+
+<footer class="footer">
+    <p>EDUSEX | El conocimiento se construye en equipo.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Material informativo y educativo de EDUSEX.">
+
+    <title>EDUSEX | Material informativo</title>
+
+    <link rel="stylesheet" href="estilos.css">
+
+    <style>
+        /* BARRA DE NAVEGACIÓN Y LOGO */
+        .navbar-edusex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .marca-edusex {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            text-decoration: none;
+            font-size: 23px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .marca-edusex img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            border-radius: 50%;
+            background: white;
+            border: 2px solid #f5a6d5;
+        }
+
+        .marca-edusex .marca-acento {
+            color: #f5a6d5;
+        }
+
+        /* IMÁGENES DE LAS TARJETAS */
+        .imagen-tarjeta {
+            cursor: zoom-in;
+            transition: transform 0.25s, filter 0.25s;
+        }
+
+        .imagen-tarjeta:hover {
+            filter: brightness(0.9);
+        }
+
+        .texto-ampliar {
+            margin-top: 8px;
+            color: #7b3971;
+            font-size: 13px;
+        }
+
+        /* VENTANA PARA AMPLIAR IMÁGENES */
+        .visor-imagen {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            padding: 25px;
+            background: rgba(8, 13, 25, 0.92);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .visor-imagen.activo {
+            display: flex;
+        }
+
+        .visor-contenido {
+            max-width: 1000px;
+            max-height: 90vh;
+            width: 100%;
+            text-align: center;
+        }
+
+        .visor-contenido img {
+            display: block;
+            max-width: 100%;
+            max-height: 78vh;
+            width: auto;
+            height: auto;
+            margin: 0 auto;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 8px 35px #00000070;
+        }
+
+        .visor-titulo {
+            margin-top: 12px;
+            color: white;
+            font-size: 16px;
+        }
+
+        .cerrar-visor {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            width: 46px;
+            height: 46px;
+            border: 0;
+            border-radius: 50%;
+            background: white;
+            color: #28152d;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        .cerrar-visor:hover {
+            background: #f5a6d5;
+        }
+
+        @media (max-width: 700px) {
+            .navbar-edusex {
+                justify-content: center;
+            }
+
+            .marca-edusex {
+                margin: 5px auto;
+            }
+
+            .nav-links {
+                width: 100%;
+            }
+
+            .visor-imagen {
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- BARRA DE NAVEGACIÓN EDUSEX -->
+    <nav class="navbar navbar-edusex">
+
+        <a href="index.html" class="marca-edusex">
+            <img src="logo.jpeg" alt="Logo circular de EDUSEX">
+            <span>EDU<span class="marca-acento">SEX</span></span>
+        </a>
+
+        <div class="nav-links">
+            <a href="index.html">Inicio</a>
+            <a href="index.html#ingreso">Ingresar</a>
+            <a href="index.html#objetivo">Proyecto</a>
+            <a href="index.html#menu">Menú</a>
+            <a href="programadores.html">Programadores</a>
+            <a href="material.html">Material</a>
+            <a href="campanas.html">Campañas</a>
+            <a href="centros.html">Centros de consulta</a>
+            <a href="chatbot.html">ChatBot</a>
+        </div>
+
+    </nav>
+
+    <!-- ENCABEZADO -->
+    <header class="encabezado-pagina">
+        <h1>Material informativo</h1>
+        <p>
+            Recursos educativos para aprender, informarse
+            y compartir información sobre salud sexual y bienestar.
+        </p>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="contenido">
+
+        <section class="bloque">
+            <h2>Material de apoyo del CECyTEM</h2>
+
+            <p>
+                En este apartado se recopilan materiales educativos
+                que contribuyen a la información, orientación y prevención.
+                Aquí puedes consultar folletos, trípticos, carteles
+                y actividades relacionadas con nuestro proyecto EDUSEX.
+            </p>
+        </section>
+
+        <!-- TARJETAS DE MATERIAL INFORMATIVO -->
+        <section class="grid">
+
+            <article class="tarjeta">
+                <img
+                    class="imagen-tarjeta"
+                    src="imagenes/folleto1.jpg"
+                    alt="Primer folleto informativo"
+                    loading="lazy"
+                    tabindex="0"
+                    role="button"
+                    aria-label="Ampliar primer folleto informativo"
+                >
+
+                <div class="tarjeta-contenido">
+                    <h3>Folleto informativo 1</h3>
+                    <p>
+                        Información educativa sobre salud sexual,
+                        prevención y bienestar juvenil.
+                    </p>
+                    <p class="texto-ampliar">🔍 Toca la imagen para ampliarla.</p>
+                </div>
+            </article>
+
+            <article class="tarjeta">
+                <img
+                    class="imagen-tarjeta"
+                    src="imagenes/folleto2.jpg"
+                    alt="Segundo folleto informativo"
+                    loading="lazy"
+                    tabindex="0"
+                    role="button"
+                    aria-label="Ampliar segundo folleto informativo"
+                >
+
+                <div class="tarjeta-contenido">
+                    <h3>Folleto informativo 2</h3>
+                    <p>
+                        Material de apoyo para conocer medidas
+                        de prevención y tomar decisiones informadas.
+                    </p>
+                    <p class="texto-ampliar">🔍 Toca la imagen para ampliarla.</p>
+                </div>
+            </article>
+
+            <article class="tarjeta">
+                <img
+                    class="imagen-tarjeta"
+                    src="imagenes/triptico.jpg"
+                    alt="Tríptico educativo"
+                    loading="lazy"
+                    tabindex="0"
+                    role="button"
+                    aria-label="Ampliar tríptico educativo"
+                >
+
+                <div class="tarjeta-contenido">
+                    <h3>Trípticos educativos</h3>
+                    <p>
+                        Recursos visuales para comprender temas
+                        importantes de educación sexual.
+                    </p>
+                    <p class="texto-ampliar">🔍 Toca la imagen para ampliarla.</p>
+                </div>
+            </article>
+
+            <article class="tarjeta">
+                <img
+                    class="imagen-tarjeta"
+                    src="imagenes/cartel.jpg"
+                    alt="Cartel educativo"
+                    loading="lazy"
+                    tabindex="0"
+                    role="button"
+                    aria-label="Ampliar cartel educativo"
+                >
+
+                <div class="tarjeta-contenido">
+                    <h3>Carteles escolares</h3>
+                    <p>
+                        Mensajes de orientación, prevención,
+                        respeto y autocuidado.
+                    </p>
+                    <p class="texto-ampliar">🔍 Toca la imagen para ampliarla.</p>
+                </div>
+            </article>
+
+            <article class="tarjeta">
+                <img
+                    class="imagen-tarjeta"
+                    src="imagenes/actividad.jpg"
+                    alt="Actividad educativa del plantel"
+                    loading="lazy"
+                    tabindex="0"
+                    role="button"
+                    aria-label="Ampliar imagen de actividad educativa"
+                >
+
+                <div class="tarjeta-contenido">
+                    <h3>Actividades del plantel</h3>
+                    <p>
+                        Fotografías y evidencias autorizadas
+                        de actividades relacionadas con EDUSEX.
+                    </p>
+                    <p class="texto-ampliar">🔍 Toca la imagen para ampliarla.</p>
+                </div>
+            </article>
+
+            <article class="tarjeta">
+                <img
+                    class="imagen-tarjeta"
+                    src="imagenes/otro_material.jpg"
+                    alt="Otros recursos educativos"
+                    loading="lazy"
+                    tabindex="0"
+                    role="button"
+                    aria-label="Ampliar otros recursos educativos"
+                >
+
+                <div class="tarjeta-contenido">
+                    <h3>Otros recursos</h3>
+                    <p>
+                        Espacio para agregar guías, infografías
+                        y otros materiales útiles para estudiantes.
+                    </p>
+                    <p class="texto-ampliar">🔍 Toca la imagen para ampliarla.</p>
+                </div>
+            </article>
+
+        </section>
+
+        <!-- VISOR DE IMÁGENES -->
+        <div
+            class="visor-imagen"
+            id="visorImagen"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Imagen ampliada"
+            aria-hidden="true"
+        >
+            <button
+                class="cerrar-visor"
+                id="cerrarVisor"
+                type="button"
+                aria-label="Cerrar imagen ampliada"
+            >×</button>
+
+            <div class="visor-contenido">
+                <img id="imagenAmpliada" src="" alt="">
+                <p class="visor-titulo" id="tituloAmpliado"></p>
+            </div>
+        </div>
+
+        <!-- AVISO DE PRIVACIDAD -->
+        <aside class="aviso">
+            <strong>Importante:</strong>
+            utiliza fotografías autorizadas y evita publicar nombres
+            completos, teléfonos, datos personales o rostros de estudiantes
+            sin su consentimiento.
+        </aside>
+
+        <!-- REGRESAR -->
+        <div style="text-align: center; margin: 30px 0;">
+            <a class="btn" href="index.html">Volver al inicio</a>
+        </div>
+
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="footer">
+        <p>EDUSEX | Educación, prevención y bienestar juvenil.</p>
+        <p>CECyTEM Plantel Villa Victoria</p>
+    </footer>
+
+    <!-- FUNCIONAMIENTO DEL VISOR -->
+    <script>
+        const visor = document.getElementById("visorImagen");
+        const imagenAmpliada = document.getElementById("imagenAmpliada");
+        const tituloAmpliado = document.getElementById("tituloAmpliado");
+        const botonCerrar = document.getElementById("cerrarVisor");
+
+        let elementoAnterior = null;
+
+        function abrirImagen(imagen) {
+            elementoAnterior = imagen;
+
+            imagenAmpliada.src = imagen.src;
+            imagenAmpliada.alt = imagen.alt;
+            tituloAmpliado.textContent = imagen.alt;
+
+            visor.classList.add("activo");
+            visor.setAttribute("aria-hidden", "false");
+            document.body.style.overflow = "hidden";
+            botonCerrar.focus();
+        }
+
+        function cerrarImagen() {
+            visor.classList.remove("activo");
+            visor.setAttribute("aria-hidden", "true");
+            imagenAmpliada.src = "";
+            document.body.style.overflow = "";
+
+            if (elementoAnterior) {
+                elementoAnterior.focus();
+            }
+        }
+
+        document.querySelectorAll(".imagen-tarjeta").forEach(function(imagen) {
+            imagen.addEventListener("click", function() {
+                abrirImagen(imagen);
+            });
+
+            imagen.addEventListener("keydown", function(evento) {
+                if (evento.key === "Enter" || evento.key === " ") {
+                    evento.preventDefault();
+                    abrirImagen(imagen);
+                }
+            });
+        });
+
+        botonCerrar.addEventListener("click", cerrarImagen);
+
+        visor.addEventListener("click", function(evento) {
+            if (evento.target === visor) {
+                cerrarImagen();
+            }
+        });
+
+        document.addEventListener("keydown", function(evento) {
+            if (evento.key === "Escape" && visor.classList.contains("activo")) {
+                cerrarImagen();
+            }
+        });
+    </script>
+
+</body>
+</html>
